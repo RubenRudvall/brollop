@@ -212,54 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // 8. Digital Guestbook Handling
-    const guestbookForm = document.getElementById('guestbookForm');
-    const entriesList = document.getElementById('entriesList');
 
-    // Load saved guestbook entries
-    const savedEntries = JSON.parse(localStorage.getItem('wedding_guestbook_entries') || '[]');
-    savedEntries.forEach(entry => {
-        appendGuestbookEntry(entry.author, entry.message, entry.date, false);
-    });
-
-    if (guestbookForm) {
-        guestbookForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const author = document.getElementById('gbAuthor').value.trim();
-            const message = document.getElementById('gbMessage').value.trim();
-            const dateStr = 'Alldeles nyss';
-
-            if (author && message) {
-                appendGuestbookEntry(author, message, dateStr, true);
-
-                // Save entry to localStorage
-                savedEntries.unshift({ author, message, date: dateStr });
-                localStorage.setItem('wedding_guestbook_entries', JSON.stringify(savedEntries));
-
-                // Reset form
-                guestbookForm.reset();
-            }
-        });
-    }
-
-    function appendGuestbookEntry(author, message, date, animate = true) {
-        const item = document.createElement('div');
-        item.className = 'gb-entry-item';
-        if (animate) {
-            item.style.animation = 'fadeInUp 0.5s ease forward';
-        }
-
-        item.innerHTML = `
-            <div class="gb-entry-header">
-                <strong class="gb-author"><i class="fa-solid fa-heart"></i> ${escapeHtml(author)}</strong>
-                <span class="gb-date">${escapeHtml(date)}</span>
-            </div>
-            <p class="gb-text">"${escapeHtml(message)}"</p>
-        `;
-
-        entriesList.insertBefore(item, entriesList.firstChild);
-    }
 
     // Helper: Utility to escape HTML strings
     function escapeHtml(str) {

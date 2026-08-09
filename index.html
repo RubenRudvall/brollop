@@ -50,7 +50,6 @@
                 <li><a href="#program"><i class="fa-solid fa-clock micro-icon"></i> Program</a></li>
                 <li><a href="#platsen"><i class="fa-solid fa-landmark micro-icon"></i> Lokalen</a></li>
                 <li><a href="#praktisk-info"><i class="fa-solid fa-circle-info micro-icon"></i> Praktisk Info</a></li>
-                <li><a href="#gastbok"><i class="fa-solid fa-book-open micro-icon"></i> Gästbok</a></li>
                 <li><a href="#rsvp" class="nav-btn-rsvp"><i class="fa-solid fa-envelope-open-text"></i> O.S.V.</a></li>
             </ul>
         </div>
@@ -410,6 +409,17 @@
                                 tid till dem så att de kan planera kvällens schema.</p>
                         </div>
                     </div>
+
+                    <!-- FAQ 4: Presenter -->
+                    <div class="accordion-item fade-in-up delay-3">
+                        <button class="accordion-header">
+                            <span><i class="fa-solid fa-gift accordion-icon"></i> Önskelista & Presenter</span>
+                            <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                        </button>
+                        <div class="accordion-body">
+                            <p>Den allra finaste presenten för oss är att ni närvarar och firar vår dag tillsammans med oss! Om ni ändå önskar ge en gåva tar vi tacksamt emot ett bidrag till vår smekmånad.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -455,64 +465,6 @@
             </div>
         </section>
 
-        <!-- Sektion: Gästbok (Guestbook) -->
-        <section class="section-padding guestbook-section" id="gastbok">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-subtitle">Minnesbok & Hälsningar</span>
-                    <h2 class="section-title">Digital Gästbok</h2>
-                    <p class="section-desc">Lämna en varm hälsning till Hanna & Ruben inför den stora dagen.</p>
-                    <div class="ornament-divider">✦ ✤ ✦</div>
-                </div>
-
-                <div class="guestbook-grid">
-                    <!-- Form to add new entry -->
-                    <div class="guestbook-form-card fade-in-up">
-                        <h3><i class="fa-solid fa-feather-pointed"></i> Skriv i Gästboken</h3>
-                        <form id="guestbookForm">
-                            <div class="form-group">
-                                <label for="gbAuthor">Ditt Namn</label>
-                                <input type="text" id="gbAuthor" placeholder="Ditt namn..." required>
-                            </div>
-                            <div class="form-group">
-                                <label for="gbMessage">Din Hälsning</label>
-                                <textarea id="gbMessage" rows="4" placeholder="Skriv din önskan eller ett minne..."
-                                    required></textarea>
-                            </div>
-                            <button type="submit" class="vintage-btn primary-btn full-width">
-                                <i class="fa-solid fa-pen"></i> Publicera Hälsning
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- Entries List -->
-                    <div class="guestbook-entries-card fade-in-up delay-1">
-                        <h3><i class="fa-solid fa-book-open"></i> Hälsningar från Nära & Kära</h3>
-                        <div class="entries-scroll-list" id="entriesList">
-                            <!-- Pre-filled Sample Entry 1 -->
-                            <div class="gb-entry-item">
-                                <div class="gb-entry-header">
-                                    <strong class="gb-author"><i class="fa-solid fa-heart"></i> Mamma & Pappa</strong>
-                                    <span class="gb-date">Nyss</span>
-                                </div>
-                                <p class="gb-text">"Vi längtar så enormt efter att få se er båda säga ja i kapellet. Ni
-                                    är som skapade för varandra!"</p>
-                            </div>
-
-                            <!-- Pre-filled Sample Entry 2 -->
-                            <div class="gb-entry-item">
-                                <div class="gb-entry-header">
-                                    <strong class="gb-author"><i class="fa-solid fa-heart"></i> Sofia & Marcus
-                                        (Toastmasters)</strong>
-                                    <span class="gb-date">Igår</span>
-                                </div>
-                                <p class="gb-text">"Talet är förberett och feststämningen laddad till 100%! Detta kommer
-                                    bli århundradets bröllopsfest!"</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
     </main>
