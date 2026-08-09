@@ -4,8 +4,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Live Countdown Timer (Target Date: 7 Augusti 2027)
-    const targetDate = new Date('August 7, 2027 14:00:00').getTime();
+    // 1. Live Countdown Timer (Target Date: 7 Augusti 2027 kl 15:00)
+    const targetDate = new Date('August 7, 2027 15:00:00').getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
