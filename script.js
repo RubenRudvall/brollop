@@ -1,220 +1,259 @@
 /* ==========================================================================
-   1800-s VINTAGE WEDDING WEBSITE - INTERACTIVE SCRIPT
+   THE WEDDING NEWS – INTERACTIVE SCRIPT (CROSSWORD & RSVP)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Live Countdown Timer (Target Date: 7 Augusti 2027 kl 15:00)
-    const targetDate = new Date('August 7, 2027 15:00:00').getTime();
+    // =====================================================================
+    // 1. INTERAKTIVT KORSORD (THE WEDDING CROSSWORD)
+    // =====================================================================
 
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const difference = targetDate - now;
+    const gridContainer = document.getElementById('crosswordGrid');
+    const checkBtn = document.getElementById('checkCrosswordBtn');
+    const resetBtn = document.getElementById('resetCrosswordBtn');
+    const feedbackText = document.getElementById('crosswordFeedback');
 
-        if (difference > 0) {
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    const gridSize = 11; // 11x11 rutnät
 
-            document.getElementById('cdDays').textContent = String(days).padStart(2, '0');
-            document.getElementById('cdHours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('cdMinutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('cdSeconds').textContent = String(seconds).padStart(2, '0');
-        } else {
-            document.getElementById('countdownWrapper').innerHTML = '<div style="font-family: var(--font-heading-serif); font-size: 1.5rem; color: var(--color-sage-dark);">Idag firar vi bröllop!</div>';
+    /**
+     * Korsordslayout:
+     * 1 Vågrätt: RUBEN (rad 1, kol 0-4)
+     * 2 Lodrätt: HANNA (rad 0-4, kol 4) -> Intersekterar med RUBEN på 'N' vid (1,4)
+     * 3 Vågrätt: GDANSK (rad 4, kol 2-7) -> Intersekterar med HANNA på 'A' vid (4,4)
+     * 4 Vågrätt: TIO (rad 7, kol 3-5)
+     * 5 Lodrätt: GUSTAFSBERG (rad 0-10, kol 8)
+     */
+    const crosswordData = [
+        // Rad 0
+        ['', '', '', '', { letter: 'H', num: 2 }, '', '', '', { letter: 'G', num: 5 }, '', ''],
+        // Rad 1
+        [{ letter: 'R', num: 1 }, { letter: 'U' }, { letter: 'B' }, { letter: 'E' }, { letter: 'N' }, '', '', '', { letter: 'U' }, '', ''],
+        // Rad 2
+        ['', '', '', '', { letter: 'N' }, '', '', '', { letter: 'S' }, '', ''],
+        // Rad 3
+        ['', '', '', '', { letter: 'N' }, '', '', '', { letter: 'T' }, '', ''],
+        // Rad 4
+        ['', '', { letter: 'G', num: 3 }, { letter: 'D' }, { letter: 'A' }, { letter: 'N' }, { letter: 'S' }, { letter: 'K' }, { letter: 'A' }, '', ''],
+        // Rad 5
+        ['', '', '', '', '', '', '', '', { letter: 'F' }, '', ''],
+        // Rad 6
+        ['', '', '', '', '', '', '', '', { letter: 'S' }, '', ''],
+        // Rad 7
+        ['', '', '', { letter: 'T', num: 4 }, { letter: 'I' }, { letter: 'O' }, '', '', { letter: 'B' }, '', ''],
+        // Rad 8
+        ['', '', '', '', '', '', '', '', { letter: 'E' }, '', ''],
+        // Rad 9
+        ['', '', '', '', '', '', '', '', { letter: 'R' }, '', ''],
+        // Rad 10
+        ['', '', '', '', '', '', '', '', { letter: 'G' }, '', '']
+    ];
+
+    function buildCrossword() {
+        if (!gridContainer) return;
+        gridContainer.innerHTML = '';
+
+        for (let r = 0; r < gridSize; r++) {
+            for (let c = 0; c < gridSize; c++) {
+                const cellData = crosswordData[r][c];
+                const cell = document.createElement('div');
+                cell.classList.add('cw-cell');
+
+                if (cellData === '') {
+                    cell.classList.add('blocked');
+                } else {
+                    if (cellData.num) {
+                        const numSpan = document.createElement('span');
+                        numSpan.classList.add('cw-number');
+                        numSpan.textContent = cellData.num;
+                        cell.appendChild(numSpan);
+                    }
+
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.maxLength = 1;
+                    input.classList.add('cw-input');
+                    input.dataset.row = r;
+                    input.dataset.col = c;
+                    input.dataset.solution = cellData.letter;
+
+                    // Auto-hopp till nästa ruta vid inmatning
+                    input.addEventListener('input', (e) => {
+                        input.value = input.value.toUpperCase();
+                        input.classList.remove('correct', 'incorrect');
+                        if (input.value.length === 1) {
+                            focusNextInput(r, c);
+                        }
+                    });
+
+                    // Backspace för att backa
+                    input.addEventListener('keydown', (e) => {
+                        if (e.key === 'Backspace' && input.value === '') {
+                            focusPrevInput(r, c);
+                        }
+                    });
+
+                    cell.appendChild(input);
+                }
+
+                gridContainer.appendChild(cell);
+            }
         }
     }
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    function focusNextInput(r, c) {
+        const inputs = Array.from(gridContainer.querySelectorAll('.cw-input'));
+        const currentIndex = inputs.findIndex(i => parseInt(i.dataset.row) === r && parseInt(i.dataset.col) === c);
+        if (currentIndex !== -1 && currentIndex < inputs.length - 1) {
+            inputs[currentIndex + 1].focus();
+        }
+    }
 
+    function focusPrevInput(r, c) {
+        const inputs = Array.from(gridContainer.querySelectorAll('.cw-input'));
+        const currentIndex = inputs.findIndex(i => parseInt(i.dataset.row) === r && parseInt(i.dataset.col) === c);
+        if (currentIndex > 0) {
+            inputs[currentIndex - 1].focus();
+        }
+    }
 
-    // 2. Audio Control Toggle
-    const audioToggleBtn = document.getElementById('audioToggleBtn');
-    const bgMusic = document.getElementById('bgMusic');
-    const audioStatusText = document.getElementById('audioStatusText');
-    let isPlaying = false;
+    if (checkBtn) {
+        checkBtn.addEventListener('click', () => {
+            const inputs = gridContainer.querySelectorAll('.cw-input');
+            let correctCount = 0;
+            let totalCount = inputs.length;
 
-    if (audioToggleBtn && bgMusic) {
-        audioToggleBtn.addEventListener('click', () => {
-            if (!isPlaying) {
-                bgMusic.play().then(() => {
-                    isPlaying = true;
-                    audioStatusText.textContent = 'På (Spelar Pianoslinga)';
-                    audioToggleBtn.style.background = 'var(--color-sage-primary)';
-                }).catch(err => {
-                    console.log('Audio playback prevented by browser:', err);
-                    alert('Klicka för att godkänna musikuppspelning i din webbläsare.');
-                });
+            inputs.forEach(input => {
+                const val = input.value.trim().toUpperCase();
+                const expected = input.dataset.solution.toUpperCase();
+
+                if (val === expected) {
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                    correctCount++;
+                } else if (val !== '') {
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                } else {
+                    input.classList.remove('correct', 'incorrect');
+                }
+            });
+
+            if (correctCount === totalCount) {
+                feedbackText.style.color = '#2E7D32';
+                feedbackText.textContent = '🎉 Strålande! Alla ord är helt korrekta!';
             } else {
-                bgMusic.pause();
-                isPlaying = false;
-                audioStatusText.textContent = 'Av';
-                audioToggleBtn.style.background = 'var(--color-sage-dark)';
+                feedbackText.style.color = '#111111';
+                feedbackText.textContent = `Du har ${correctCount} av ${totalCount} rätta bokstäver. Fortsätt kämpa!`;
             }
         });
     }
 
-
-    // 3. Navigation Bar Scroll & Mobile Menu Toggle
-    const mainNav = document.getElementById('mainNav');
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            mainNav.classList.add('scrolled');
-        } else {
-            mainNav.classList.remove('scrolled');
-        }
-    });
-
-    if (navToggle && navLinks) {
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu on link click
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            const inputs = gridContainer.querySelectorAll('.cw-input');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
             });
+            if (feedbackText) feedbackText.textContent = '';
         });
     }
 
-
-    // 4. Wax Seal Interactive Click Effect
-    const waxSeal = document.getElementById('waxSeal');
-    if (waxSeal) {
-        waxSeal.addEventListener('click', () => {
-            waxSeal.style.transform = 'translateX(-50%) scale(1.25) rotate(5deg)';
-            setTimeout(() => {
-                waxSeal.style.transform = 'translateX(-50%) scale(1)';
-            }, 300);
-        });
-    }
+    buildCrossword();
 
 
-    // 5. Scroll Fade-In Intersection Observer
-    const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -40px 0px'
-    };
+    // =====================================================================
+    // 2. INTERAKTIVT OSA-FORMULÄR (RSVP)
+    // =====================================================================
 
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+    const rsvpForm = document.getElementById('gazetteRsvpForm');
+    const rsvpDoneCard = document.getElementById('rsvpDoneCard');
+    const rsvpSummaryBox = document.getElementById('rsvpSummaryBox');
+    const rsvpResetBtn = document.getElementById('rsvpResetBtn');
+    const partySizeSelect = document.getElementById('rsvpPartySize');
+    const plusOneWrapper = document.getElementById('rsvpPlusOneWrapper');
 
-    document.querySelectorAll('.fade-in-up').forEach(el => {
-        scrollObserver.observe(el);
-    });
-
-
-    // 6. Accordion (FAQ) Functionality
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const accordionItem = header.parentElement;
-            const isActive = accordionItem.classList.contains('active');
-
-            // Close all items
-            document.querySelectorAll('.accordion-item').forEach(item => {
-                item.classList.remove('active');
-            });
-
-            // Toggle clicked item
-            if (!isActive) {
-                accordionItem.classList.add('active');
-            }
-        });
-    });
-
-
-    // 7. RSVP Form Interactive Logic & Local Storage Persistence
-    const rsvpForm = document.getElementById('rsvpForm');
-    const rsvpConfirmation = document.getElementById('rsvpConfirmation');
-    const summaryDetails = document.getElementById('summaryDetails');
-    const resetRsvpBtn = document.getElementById('resetRsvpBtn');
-    const partySizeSelect = document.getElementById('partySize');
-    const plusOneGroup = document.getElementById('plusOneGroup');
-
-    // Toggle Plus One Name field
-    if (partySizeSelect && plusOneGroup) {
+    // Toggle Plus One
+    if (partySizeSelect && plusOneWrapper) {
         partySizeSelect.addEventListener('change', () => {
             if (partySizeSelect.value === '2') {
-                plusOneGroup.style.display = 'block';
+                plusOneWrapper.style.display = 'block';
             } else {
-                plusOneGroup.style.display = 'none';
+                plusOneWrapper.style.display = 'none';
             }
         });
     }
 
-    // Load saved RSVP if exists
-    const savedRsvp = localStorage.getItem('wedding_rsvp_data');
+    // Ladda sparat svar
+    const savedRsvp = localStorage.getItem('wedding_news_rsvp_data');
     if (savedRsvp) {
-        const data = JSON.parse(savedRsvp);
-        showRsvpSummary(data);
+        try {
+            const data = JSON.parse(savedRsvp);
+            showRsvpSummary(data);
+        } catch (e) {
+            console.error('Error parsing RSVP data:', e);
+        }
     }
 
     if (rsvpForm) {
         rsvpForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const formData = {
-                name: document.getElementById('guestName').value.trim(),
-                email: document.getElementById('guestEmail').value.trim(),
-                attendance: document.querySelector('input[name="attendance"]:checked').value,
-                partySize: document.getElementById('partySize').value,
-                plusOneName: document.getElementById('plusOneName').value.trim(),
-                dietary: document.getElementById('dietary').value.trim(),
-                songRequest: document.getElementById('songRequest').value.trim(),
-                message: document.getElementById('messageText').value.trim(),
-                submittedAt: new Date().toLocaleDateString('sv-SE')
+            const attendanceInput = document.querySelector('input[name="attendance"]:checked');
+            const data = {
+                name: document.getElementById('rsvpName').value.trim(),
+                email: document.getElementById('rsvpEmail').value.trim(),
+                attendance: attendanceInput ? attendanceInput.value : 'ja',
+                partySize: document.getElementById('rsvpPartySize').value,
+                plusOneName: document.getElementById('rsvpPlusOne').value.trim(),
+                dietary: document.getElementById('rsvpDietary').value.trim(),
+                message: document.getElementById('rsvpSongMessage').value.trim(),
+                timestamp: new Date().toLocaleDateString('sv-SE', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
             };
 
-            // Save to localStorage
-            localStorage.setItem('wedding_rsvp_data', JSON.stringify(formData));
-
-            // Show Confirmation Summary
-            showRsvpSummary(formData);
+            localStorage.setItem('wedding_news_rsvp_data', JSON.stringify(data));
+            showRsvpSummary(data);
         });
     }
 
     function showRsvpSummary(data) {
+        if (!rsvpSummaryBox || !rsvpForm || !rsvpDoneCard) return;
+
         const isAttending = data.attendance === 'ja';
-        
-        summaryDetails.innerHTML = `
-            <p style="margin-bottom: 6px;"><strong>Namn:</strong> ${escapeHtml(data.name)} (${escapeHtml(data.email)})</p>
-            <p style="margin-bottom: 6px;"><strong>Deltagande:</strong> ${isAttending ? '<span style="color: var(--color-sage-primary); font-weight: 600;">Ja, kommer med glädje!</span>' : '<span style="color: var(--color-wax-red); font-weight: 600;">Nej, har tyvärr förhinder</span>'}</p>
-            ${isAttending && data.partySize === '2' ? `<p style="margin-bottom: 6px;"><strong>Medföljande:</strong> ${escapeHtml(data.plusOneName || 'Ej angivet')}</p>` : ''}
-            ${data.dietary ? `<p style="margin-bottom: 6px;"><strong>Specialkost/Allergier:</strong> ${escapeHtml(data.dietary)}</p>` : ''}
-            ${data.songRequest ? `<p style="margin-bottom: 6px;"><strong>Önskelåt:</strong> ${escapeHtml(data.songRequest)}</p>` : ''}
-            ${data.message ? `<p style="margin-bottom: 6px;"><strong>Hälsning:</strong> "<em>${escapeHtml(data.message)}</em>"</p>` : ''}
-            <p style="font-size: 0.8rem; color: var(--color-text-light); margin-top: 10px;">Registrerat datum: ${data.submittedAt}</p>
+
+        rsvpSummaryBox.innerHTML = `
+            <p style="margin-bottom: 5px;"><strong>Namn:</strong> ${escapeHtml(data.name)} (${escapeHtml(data.email)})</p>
+            <p style="margin-bottom: 5px;"><strong>Deltagande:</strong> ${isAttending ? '<strong style="color: #2E7D32;">Ja, kommer med stor glädje!</strong>' : '<span style="color: #666;">Har tyvärr förhinder</span>'}</p>
+            ${isAttending && data.partySize === '2' ? `<p style="margin-bottom: 5px;"><strong>Medföljande:</strong> ${escapeHtml(data.plusOneName || 'Ej specificerat')}</p>` : ''}
+            ${data.dietary ? `<p style="margin-bottom: 5px;"><strong>Specialkost/Allergier:</strong> ${escapeHtml(data.dietary)}</p>` : ''}
+            ${data.message ? `<p style="margin-bottom: 5px;"><strong>Hälsning/Låt:</strong> ”<em>${escapeHtml(data.message)}</em>”</p>` : ''}
+            <p style="font-size: 0.72rem; color: #888; border-top: 1px dashed #ccc; padding-top: 5px; margin-top: 8px;">Mottaget: ${data.timestamp}</p>
         `;
 
-        rsvpForm.classList.add('hidden');
-        rsvpConfirmation.classList.remove('hidden');
+        rsvpForm.style.display = 'none';
+        rsvpDoneCard.style.display = 'block';
     }
 
-    if (resetRsvpBtn) {
-        resetRsvpBtn.addEventListener('click', () => {
-            rsvpConfirmation.classList.add('hidden');
-            rsvpForm.classList.remove('hidden');
+    if (rsvpResetBtn) {
+        rsvpResetBtn.addEventListener('click', () => {
+            if (rsvpForm && rsvpDoneCard) {
+                rsvpDoneCard.style.display = 'none';
+                rsvpForm.style.display = 'flex';
+            }
         });
     }
 
 
+    // =====================================================================
+    // 3. UTILITY FUNCTIONS
+    // =====================================================================
 
-
-    // Helper: Utility to escape HTML strings
     function escapeHtml(str) {
         if (!str) return '';
         return str
