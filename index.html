@@ -4,495 +4,441 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wedding News | Hanna & Ruben – 7 Augusti 2027</title>
+    <title>Hanna & Ruben – Bröllop 7 Augusti 2027</title>
     <meta name="description"
-        content="The Wedding News • Officiell bröllopstidning och inbjudan till Hanna & Rubens bröllop vid Gustafsbergs Badrestaurang.">
+        content="Välkommen till Hanna & Rubens bröllop lördagen den 7 augusti 2027 vid Gustafsbergs Badrestaurang, Uddevalla.">
 
-    <!-- Google Fonts: Gothic/Old English Title, Classic Editorial Serif Headings, Georgia Body, Clean Sans Metadata -->
+    <!-- Google Fonts: Gammal stil / Antique Serifs & Classic Calligraphy (EB Garamond, Cinzel, Pinyon Script, Alex Brush) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!-- Custom Vintage Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <div class="newsprint-outer-wrapper">
-        <div class="newsprint-sheet">
+    <!-- ============================================================
+         KLASSISK ANRIK VINTAGE-MENY (ANTIQUE HEADER NAV)
+         ============================================================ -->
+    <header class="antique-header-nav" id="mainNav">
+        <div class="nav-inner-container">
+            <a href="#hero" class="antique-nav-logo">
+                <span class="logo-script">Hanna</span>
+                <span class="logo-amp">&amp;</span>
+                <span class="logo-script">Ruben</span>
+            </a>
+            
+            <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Öppna meny">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-            <!-- ============================================================
-                 TOP HEADER (MASTHEAD)
-                 ============================================================ -->
-            <header class="masthead-section">
+            <nav class="antique-nav-links" id="navLinks">
+                <a href="#journey" class="antique-nav-link">Vår Historia</a>
+                <span class="nav-sep">❖</span>
+                <a href="#schedule" class="antique-nav-link">Program</a>
+                <span class="nav-sep">❖</span>
+                <a href="#practical" class="antique-nav-link">Praktisk Info</a>
+                <span class="nav-sep">❖</span>
+                <a href="#survival-guide" class="antique-nav-link">Checklista</a>
+                <span class="nav-sep">❖</span>
+                <a href="#rsvp" class="antique-nav-link nav-rsvp-btn">OSA</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- ============================================================
+         HELSKÄRMS-HERO (100VH COVER MED GAMMAL STIL TYPOGRAFI)
+         ============================================================ -->
+    <section class="hero-full-section" id="hero">
+        <div class="hero-bg-container">
+            <img src="hero-photo.jpg" alt="Hanna & Ruben" class="hero-full-img">
+            <div class="hero-overlay-gradient"></div>
+        </div>
+
+        <div class="hero-bottom-content">
+            <div class="hero-vintage-ornament-top">
+                <span class="ornament-line"></span>
+                <span class="ornament-glyph">❧</span>
+                <span class="ornament-line"></span>
+            </div>
+            
+            <div class="hero-venue-tag">
+                GUSTAFSBERGS BADRESTAURANG &nbsp;•&nbsp; UDDEVALLA
+            </div>
+            
+            <h1 class="hero-main-title">
+                HANNA <span class="ampersand">&amp;</span> RUBEN
+            </h1>
+            
+            <p class="hero-script-tag">En kärlekshistoria genom tio år</p>
+            
+            <p class="hero-date-line">
+                Lördagen den 7 Augusti 2027
+            </p>
+            
+            <div class="hero-vintage-ornament-bottom">
+                <a href="#countdown" class="hero-scroll-btn">
+                    <span>Stig på</span>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         NEDRÄKNINGSKLOCKA (COUNTDOWN)
+         ============================================================ -->
+    <section class="countdown-section" id="countdown">
+        <div class="vintage-container">
+            <div class="countdown-box">
                 
-                <!-- Översta raden: Lokal (vänster) & Adress (höger) -->
-                <div class="masthead-venue-bar">
-                    <span class="venue-left">GUSTAFSBERGS BADRESTAURANG, UDDEVALLA</span>
-                    <span class="venue-right">GUSTAFSBERG 412, 451 91 UDDEVALLA</span>
+                <!-- Gammaldags botanisk mässingsavdelare -->
+                <div class="antique-divider">
+                    <span class="divider-line"></span>
+                    <span class="divider-icon">❦</span>
+                    <span class="divider-line"></span>
                 </div>
 
-                <!-- Tunn linje följt av centrerad tagline -->
-                <div class="masthead-tagline-bar">
-                    <span class="tagline-words">CELEBRATION &nbsp;|&nbsp; LOVE &nbsp;|&nbsp; TOGETHERNESS &nbsp;|&nbsp; PROMISE &nbsp;|&nbsp; HAPPINESS &nbsp;|&nbsp; ROMANCE</span>
-                </div>
-
-                <!-- Huvudtitel i gotisk stil -->
-                <div class="masthead-logo-wrap">
-                    <h1 class="main-newspaper-title">The Wedding News</h1>
-                </div>
-
-                <!-- Inramad datumpanel (mellan två horisontella linjer) -->
-                <div class="masthead-dateline-panel">
-                    <span class="date-panel-item panel-left">ISSUE VOL. 1</span>
-                    <span class="date-panel-item panel-center">LÖRDAG 7 AUGUSTI 2027</span>
-                    <span class="date-panel-item panel-right">PRICE: ONE BIG SMILE</span>
-                </div>
-
-                <!-- Sticky Navigationsmeny -->
-                <nav class="newspaper-nav" id="stickyNav">
-                    <div class="nav-links-container">
-                        <a href="#hero" class="nav-item">Startsida</a>
-                        <span class="nav-dot">•</span>
-                        <a href="#journey" class="nav-item">The Journey of Us</a>
-                        <span class="nav-dot">•</span>
-                        <a href="#schedule" class="nav-item">Wedding Schedule</a>
-                        <span class="nav-dot">•</span>
-                        <a href="#statistics" class="nav-item">Statistics</a>
-                        <span class="nav-dot">•</span>
-                        <a href="#crossword" class="nav-item">Wedding Crossword</a>
-                        <span class="nav-dot">•</span>
-                        <a href="#practical" class="nav-item">Praktisk Info</a>
-                        <span class="nav-dot">•</span>
-                        <a href="#rsvp" class="nav-item nav-highlight">OSA / RSVP</a>
-                    </div>
-                </nav>
-            </header>
-
-
-            <!-- ============================================================
-                 HERO-SEKTION (CELEBRATION OF THE UNION)
-                 ============================================================ -->
-            <section class="hero-edition-section" id="hero">
+                <h2 class="countdown-label">Vi förenas i äktenskap om</h2>
                 
-                <!-- Stor rubrik -->
-                <div class="hero-headline-block">
-                    <h2 class="hero-union-title">CELEBRATION OF THE UNION OF <br><span class="names-span">HANNA <span class="ampersand">&amp;</span> RUBEN</span></h2>
-                    <p class="hero-subdeck">Tio år av trogen kärlek kulminerar i sommarvigsel och storslagen fest i anrika Gustafsberg.</p>
+                <div class="countdown-grid" id="countdownContainer">
+                    <div class="countdown-card">
+                        <div class="countdown-number" id="cntDays">00</div>
+                        <div class="countdown-unit">Dagar</div>
+                    </div>
+                    <div class="countdown-card">
+                        <div class="countdown-number" id="cntHours">00</div>
+                        <div class="countdown-unit">Timmar</div>
+                    </div>
+                    <div class="countdown-card">
+                        <div class="countdown-number" id="cntMinutes">00</div>
+                        <div class="countdown-unit">Minuter</div>
+                    </div>
+                    <div class="countdown-card">
+                        <div class="countdown-number" id="cntSeconds">00</div>
+                        <div class="countdown-unit">Sekunder</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         THE JOURNEY OF US (VÅR HISTORIA & TIMELINE)
+         ============================================================ -->
+    <section class="journey-section" id="journey">
+        <div class="vintage-container">
+            <div class="section-header">
+                <span class="section-tag">VÅR BERÄTTELSE</span>
+                <h2 class="section-title">The Journey of Us</h2>
+                <p class="section-subtitle">Hur ett möte i gymnasiet ledde till ett livslångt löfte</p>
+            </div>
+
+            <div class="journey-content-grid">
+                <!-- Vänster: Berättelsen -->
+                <div class="journey-intro-card">
+                    <p class="lead-p">
+                        Allt tog sin början i gymnasiets första årskurs där vi placerades i samma klassrum. Det skulle dock dröja till tvåan innan samtalen tog fart på allvar – och sedan dess har vi varit oskiljaktiga i vått och torrt.
+                    </p>
+                    <p>
+                        Under ett helt decennium har vi delat resor, vardagsäventyr och skratt. Nu kröner vi vår tioåriga resa med bröllop på exakt samma datum som vi först blev tillsammans!
+                    </p>
+                    <div class="card-flourish">❧ ❧ ❧</div>
                 </div>
 
-                <!-- Stort hero-foto med tidningsram och bildtext -->
-                <div class="hero-image-wrapper">
-                    <div class="newspaper-photo-frame">
-                        <img src="hero-photo.jpg" alt="Hanna och Ruben" class="hero-newspaper-img">
-                    </div>
-                    <div class="photo-caption-strip">
-                        <span class="caption-text"><strong>BRUDPARET:</strong> Hanna och Ruben förenar sina liv i Ljungs Kyrka och firar med supé och dans på Gustafsbergs Badrestaurang lördagen den 7 augusti 2027.</span>
-                        <span class="caption-credits">FOTO: PRIVAT ARKIV / THE WEDDING NEWS</span>
-                    </div>
-                </div>
-
-            </section>
-
-            <!-- Horisontell tidningslinje -->
-            <div class="newspaper-hr"></div>
-
-
-            <!-- ============================================================
-                 INNEHÅLLSSEKTIONER: RUTNÄT & TIDNINGSSPALTER
-                 ============================================================ -->
-            <div class="newspaper-main-grid">
-
-                <!-- ========================================================
-                     VÄNSTERSPALT: 1. THE JOURNEY OF US (VÅR HISTORIA)
-                     ======================================================== -->
-                <div class="grid-column left-main-col">
+                <!-- Höger: Tidslinje med anrik stil -->
+                <div class="milestones-timeline">
                     
-                    <section class="article-box" id="journey">
-                        <div class="article-header">
-                            <span class="section-tag">SPECIAL FEATURE</span>
-                            <h3 class="article-main-title">THE JOURNEY OF US</h3>
-                            <div class="article-subline">Hur ett möte i gymnasiet ledde till ett livslångt löfte</div>
+                    <div class="milestone-item">
+                        <div class="milestone-svg-node">
+                            <span class="node-glyph">❦</span>
                         </div>
+                        <span class="milestone-year-tag">ÅR 2017</span>
+                        <h3 class="milestone-title">Första Mötet</h3>
+                        <p class="milestone-desc">Klasskompisar i gymnasiet och början på vår gemensamma resa genom livet.</p>
+                    </div>
 
-                        <div class="article-text-body">
-                            <p class="lead-p"><span class="news-dropcap">A</span>llt tog sin början i gymnasiets första årskurs där vi placerades i samma klassrum. Det skulle dock dröja till tvåan innan samtalen tog fart på allvar – och sedan dess har vi varit oskiljaktiga i vått och torrt.</p>
-                            
-                            <p>Under ett helt decennium har vi delat resor, vardagsäventyr och skratt. Nu kröner vi vår tioåriga resa med bröllop på exakt samma datum som vi först blev tillsammans!</p>
+                    <div class="milestone-item">
+                        <div class="milestone-svg-node">
+                            <span class="node-glyph">❦</span>
                         </div>
+                        <span class="milestone-year-tag">ÅR 2020</span>
+                        <h3 class="milestone-title">Första Gemensamma Hemmet</h3>
+                        <p class="milestone-desc">Vi flyttar ihop under samma tak och bygger grunden för vårt liv tillsammans.</p>
+                    </div>
 
-                        <!-- Milestones Along the Way -->
-                        <div class="milestones-box">
-                            <h4 class="milestones-heading">MILESTONES ALONG THE WAY</h4>
-                            <ul class="milestones-list">
-                                <li>
-                                    <span class="milestone-year">2017</span>
-                                    <span class="milestone-desc"><strong>Första Mötet:</strong> Klasskompisar i gymnasiet och början på vår gemensamma resa.</span>
-                                </li>
-                                <li>
-                                    <span class="milestone-year">2020</span>
-                                    <span class="milestone-desc"><strong>Första Gemensamma Hemmet:</strong> Vi flyttar ihop och bygger vårt liv tillsammans.</span>
-                                </li>
-                                <li>
-                                    <span class="milestone-year">2024</span>
-                                    <span class="milestone-desc"><strong>Frieriet i Gdansk:</strong> En regnig dag i Polen – och i bara kalsongerna – går Ruben på knä och får ett tårfyllt ja!</span>
-                                </li>
-                                <li>
-                                    <span class="milestone-year">2027</span>
-                                    <span class="milestone-desc"><strong>Bröllopsdagen (7 Augusti):</strong> Exakt 10 år av kärlek firas med vigsel och fest på Gustafsberg.</span>
-                                </li>
-                            </ul>
+                    <div class="milestone-item">
+                        <div class="milestone-svg-node">
+                            <span class="node-glyph">❦</span>
                         </div>
-                    </section>
+                        <span class="milestone-year-tag">ÅR 2024</span>
+                        <h3 class="milestone-title">Frieriet i Gdansk</h3>
+                        <p class="milestone-desc">En regnig dag i Polen – och i bara kalsongerna – går Ruben på knä och får ett tårfyllt ja!</p>
+                    </div>
 
-                    <!-- Horisontell avdelare -->
-                    <div class="column-inner-hr"></div>
-
-                    <!-- ========================================================
-                         3. STATISTICS / SIFFERFAKTA I RUTOR
-                         ======================================================== -->
-                    <section class="article-box" id="statistics">
-                        <div class="article-header">
-                            <span class="section-tag">BY THE NUMBERS</span>
-                            <h3 class="article-main-title">WEDDING STATISTICS</h3>
+                    <div class="milestone-item">
+                        <div class="milestone-svg-node">
+                            <span class="node-glyph">❦</span>
                         </div>
-
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <span class="stat-number">10</span>
-                                <span class="stat-label">YEARS OF LOVE</span>
-                            </div>
-                            <div class="stat-card">
-                                <span class="stat-number">3 652</span>
-                                <span class="stat-label">DAYS TOGETHER</span>
-                            </div>
-                            <div class="stat-card">
-                                <span class="stat-number">100+</span>
-                                <span class="stat-label">GUESTS JOINING</span>
-                            </div>
-                            <div class="stat-card">
-                                <span class="stat-number">1</span>
-                                <span class="stat-label">FIRST DANCE</span>
-                            </div>
-                        </div>
-                    </section>
+                        <span class="milestone-year-tag">ÅR 2027</span>
+                        <h3 class="milestone-title">Bröllopsdagen (7 Augusti)</h3>
+                        <p class="milestone-desc">Exakt tio år av kärlek firas med kyrkvigsel och anrik supéfest på Gustafsberg.</p>
+                    </div>
 
                 </div>
+            </div>
+        </div>
+    </section>
 
 
-                <!-- ========================================================
-                     HÖGERSPALT: 2. WEDDING SCHEDULE & PRAKTISK INFO
-                     ======================================================== -->
-                <div class="grid-column right-main-col">
+    <!-- ============================================================
+         WEDDING SCHEDULE (VIGSEL & MINGEL)
+         ============================================================ -->
+    <section class="schedule-section" id="schedule">
+        <div class="vintage-container">
+            <div class="section-header">
+                <span class="section-tag">HÅLLTIDER</span>
+                <h2 class="section-title">Vigsel &amp; Mingel</h2>
+                <p class="section-subtitle">Lördagen den 7 augusti 2027</p>
+            </div>
 
-                    <!-- ========================================================
-                         2. WEDDING SCHEDULE / PROGRAM
-                         ======================================================== -->
-                    <section class="article-box" id="schedule">
-                        <div class="article-header">
-                            <span class="section-tag">OFFICIAL TIMETABLE</span>
-                            <h3 class="article-main-title">WEDDING SCHEDULE</h3>
-                            <div class="article-subline">Hålltider för lördagen den 7 augusti 2027</div>
+            <div class="schedule-grid schedule-two-col">
+                
+                <!-- 15:00 Vigsel -->
+                <div class="schedule-card">
+                    <div class="schedule-badge-time">15:00</div>
+                    <div class="schedule-details">
+                        <h3 class="schedule-event-title">Vigselceremoni</h3>
+                        <div class="schedule-location">Ljungs Kyrka, Ljungskile</div>
+                        <p class="schedule-description">Vigselakten inleds i kyrkan. Vänligen intag era platser i god tid före klockslaget.</p>
+                    </div>
+                </div>
+
+                <!-- 16:30 Brudskål & Mingel -->
+                <div class="schedule-card">
+                    <div class="schedule-badge-time">16:30</div>
+                    <div class="schedule-details">
+                        <h3 class="schedule-event-title">Brudskål &amp; Mingel</h3>
+                        <div class="schedule-location">Gustafsbergs Badrestaurang, Uddevalla</div>
+                        <p class="schedule-description">Skål för brudparet, svala förfriskningar och snittar på Byfjordens veranda inför kvällens festligheter.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         PRAKTISK INFO & TOASTMASTERS (MED BILDER)
+         ============================================================ -->
+    <section class="practical-section" id="practical">
+        <div class="vintage-container">
+            <div class="section-header">
+                <span class="section-tag">INFORMATION FÖR GÄSTER</span>
+                <h2 class="section-title">Praktiska Detaljer</h2>
+                <p class="section-subtitle">Viktig information och presentation av våra Toastmasters</p>
+            </div>
+
+            <!-- Toastmasters Showcase med bilder -->
+            <div class="toastmasters-showcase-box">
+                <div class="toastmasters-header">
+                    <div class="toastmaster-icon">⚜</div>
+                    <h3 class="toastmasters-title">Våra Toastmasters</h3>
+                    <p class="toastmasters-subtitle">
+                        Önskar ni hålla tal, sjunga en sång eller framföra ett spex under middagen? Vänligen anmäl detta i god tid till Sofie &amp; Ria!
+                    </p>
+                </div>
+
+                <div class="toastmasters-grid">
+                    <!-- Sofie -->
+                    <div class="toastmaster-profile-card">
+                        <div class="toastmaster-photo-frame">
+                            <img src="toastmaster-sofie.jpg" alt="Sofie – Toastmaster" class="toastmaster-photo">
                         </div>
+                        <h4 class="toastmaster-name">Sofie</h4>
+                        <span class="toastmaster-role">Brudgummens mor &amp; Toastmaster</span>
+                    </div>
 
-                        <div class="schedule-timeline">
-                            
-                            <div class="schedule-item">
-                                <div class="schedule-icon-cell"><i class="fa-solid fa-church"></i></div>
-                                <div class="schedule-time-cell">15:00</div>
-                                <div class="schedule-info-cell">
-                                    <h4 class="event-title">VIGSELCEREMONI</h4>
-                                    <p class="event-loc">Ljungs Kyrka, Ljungskile</p>
-                                    <p class="event-desc">Vigselceremonin inleds. Vänligen intag era platser i god tid.</p>
-                                </div>
-                            </div>
-
-                            <div class="schedule-item">
-                                <div class="schedule-icon-cell"><i class="fa-solid fa-champagne-glasses"></i></div>
-                                <div class="schedule-time-cell">16:30</div>
-                                <div class="schedule-info-cell">
-                                    <h4 class="event-title">BRUDSKÅL &amp; MINGEL</h4>
-                                    <p class="event-loc">Gustafsbergs Badrestaurang</p>
-                                    <p class="event-desc">Bubbel, mingel och snittar vid Byfjordens veranda.</p>
-                                </div>
-                            </div>
-
-                            <div class="schedule-item">
-                                <div class="schedule-icon-cell"><i class="fa-solid fa-utensils"></i></div>
-                                <div class="schedule-time-cell">18:00</div>
-                                <div class="schedule-info-cell">
-                                    <h4 class="event-title">FESTMIDDAG &amp; TAL</h4>
-                                    <p class="event-loc">Stora Festsalen</p>
-                                    <p class="event-desc">Trerätters supé, sång, spex och tal under ledning av Toastmasters.</p>
-                                </div>
-                            </div>
-
-                            <div class="schedule-item">
-                                <div class="schedule-icon-cell"><i class="fa-solid fa-music"></i></div>
-                                <div class="schedule-time-cell">21:00</div>
-                                <div class="schedule-info-cell">
-                                    <h4 class="event-title">BRUDVALS &amp; FEST</h4>
-                                    <p class="event-loc">Danssalongen</p>
-                                    <p class="event-desc">Dansgolvet öppnas och orkestern bjuder upp till fest.</p>
-                                </div>
-                            </div>
-
-                            <div class="schedule-item">
-                                <div class="schedule-icon-cell"><i class="fa-solid fa-burger"></i></div>
-                                <div class="schedule-time-cell">23:00</div>
-                                <div class="schedule-info-cell">
-                                    <h4 class="event-title">NATTLIG VICKNING</h4>
-                                    <p class="event-loc">Restaurangen</p>
-                                    <p class="event-desc">Förplägnad serveras för att hålla dansenergin uppe.</p>
-                                </div>
-                            </div>
-
-                            <div class="schedule-item">
-                                <div class="schedule-icon-cell"><i class="fa-solid fa-moon"></i></div>
-                                <div class="schedule-time-cell">02:00</div>
-                                <div class="schedule-info-cell">
-                                    <h4 class="event-title">FESTEN AVSLUTAS</h4>
-                                    <p class="event-loc">Tack för en oförglömlig natt!</p>
-                                </div>
-                            </div>
-
+                    <!-- Ria -->
+                    <div class="toastmaster-profile-card">
+                        <div class="toastmaster-photo-frame">
+                            <img src="toastmaster-ria.jpg" alt="Ria – Toastmaster" class="toastmaster-photo">
                         </div>
-                    </section>
+                        <h4 class="toastmaster-name">Ria</h4>
+                        <span class="toastmaster-role">Brudgummens syster &amp; Toastmaster</span>
+                    </div>
+                </div>
+            </div>
 
-                    <!-- Horisontell avdelare -->
-                    <div class="column-inner-hr"></div>
+            <!-- Övriga Praktiska Detaljer -->
+            <div class="practical-grid practical-three-grid">
+                
+                <div class="practical-card">
+                    <div class="practical-card-icon">⚜</div>
+                    <h3 class="practical-card-title">Klädkod</h3>
+                    <p class="practical-card-text">
+                        <strong>Kostym</strong> (Mörk eller ljusare kostym med slips eller fluga, alternativt festklänning, kjol eller dräkt).
+                    </p>
+                </div>
 
-                    <!-- ========================================================
-                         PRAKTISK INFORMATION & TOASTMASTERS
-                         ======================================================== -->
-                    <section class="article-box" id="practical">
-                        <div class="article-header">
-                            <span class="section-tag">GUEST INFORMATION</span>
-                            <h3 class="article-main-title">PRAKTISK INFO</h3>
+                <div class="practical-card">
+                    <div class="practical-card-icon">⚜</div>
+                    <h3 class="practical-card-title">Logi &amp; Boende</h3>
+                    <p class="practical-card-text">
+                        Gustafsbergs Vandrarhem &amp; Hotell (på plats vid festlokalen) eller Bohusgården (20 min vacker promenad).
+                    </p>
+                </div>
+
+                <div class="practical-card">
+                    <div class="practical-card-icon">⚜</div>
+                    <h3 class="practical-card-title">Barnpolicy</h3>
+                    <p class="practical-card-text">
+                        Vi firar gärna i vuxet sällskap under middagen och kvällens festligheter (spädbarn är självfallet varmt välkomna).
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         GÄSTENS INTERAKTIVA CHECKLISTA
+         ============================================================ -->
+    <section class="survival-section" id="survival-guide">
+        <div class="vintage-container">
+            <div class="section-header">
+                <span class="section-tag">MED GLIMTEN I ÖGAT</span>
+                <h2 class="section-title">Gästens Förberedelse-Checklista</h2>
+                <p class="section-subtitle">Bocka av dina förberedelser inför den stora dagen</p>
+            </div>
+
+            <!-- Interaktiv Gäst-Checklista -->
+            <div class="guest-checklist-wrap">
+                <div class="checklist-items-box">
+                    <label class="check-item-label">
+                        <input type="checkbox" class="survival-check">
+                        <span class="check-box-custom"></span>
+                        <span class="check-text">Bekväma dansskor (eller extra skavsårsplåster) är säkrade</span>
+                    </label>
+
+                    <label class="check-item-label">
+                        <input type="checkbox" class="survival-check">
+                        <span class="check-box-custom"></span>
+                        <span class="check-text">Mobilen är redo att ställas på ljudlöst under vigselceremonin</span>
+                    </label>
+
+                    <label class="check-item-label">
+                        <input type="checkbox" class="survival-check">
+                        <span class="check-box-custom"></span>
+                        <span class="check-text">Sångrösten är uppvärmd och redo för allsång</span>
+                    </label>
+
+                    <label class="check-item-label">
+                        <input type="checkbox" class="survival-check">
+                        <span class="check-box-custom"></span>
+                        <span class="check-text">Jag lovar att stanna kvar och äta nattlig vickning</span>
+                    </label>
+
+                    <label class="check-item-label">
+                        <input type="checkbox" class="survival-check">
+                        <span class="check-box-custom"></span>
+                        <span class="check-text">Tränat på att applådera och torka glädjetårar</span>
+                    </label>
+                </div>
+
+                <div class="checklist-progress-bar-wrap">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="survivalProgress" style="width: 0%;"></div>
+                    </div>
+                    <div class="progress-status-text" id="survivalStatus">0 av 5 punkter avklarade</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         HONEYMOON FUND & OSA
+         ============================================================ -->
+    <section class="rsvp-section" id="rsvp">
+        <div class="vintage-container">
+            
+            <div class="rsvp-dual-grid">
+                
+                <!-- Smekmånadskassa -->
+                <div class="fund-card">
+                    <span class="section-tag">BRÖLLOPSGÅVOR</span>
+                    <h2 class="fund-title">Honeymoon Fund</h2>
+                    <p class="fund-text">
+                        Er närvaro på vår bröllopsdag är den allra finaste gåvan vi kan få! För de som ändå önskar uppmärksamma dagen med en bröllopsgåva tar vi tacksamt emot ett bidrag till vår stundande smekmånad.
+                    </p>
+                    
+                    <div class="fund-gift-badge">
+                        <div class="gift-icon-box">✈</div>
+                        <div class="gift-details">
+                            <strong>BIDRAG TILL VÅR BRÖLLOPSRESA</strong>
+                            <p>Gåva eller Swish kan överlämnas vid bröllopet eller förmedlas via Toastmasters.</p>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="practical-items-grid">
-                            <div class="practical-item">
-                                <strong><i class="fa-solid fa-user-tie"></i> KLÄDKOD:</strong>
-                                <span>Kostym (mörk eller ljusare kostym med slips/fluga, alternativt klänning/kjol/byxdress).</span>
-                            </div>
-                            <div class="practical-item">
-                                <strong><i class="fa-solid fa-bullhorn"></i> TOASTMASTERS:</strong>
-                                <span>Sofie och Ria (brudgummens mor och syster). Anmäl tal, spex eller sång i god tid!</span>
-                            </div>
-                            <div class="practical-item">
-                                <strong><i class="fa-solid fa-hotel"></i> LOGI &amp; BOENDE:</strong>
-                                <span>Gustafsbergs Vandrarhem &amp; Hotell (på plats) eller Bohusgården (20 min promenad).</span>
-                            </div>
-                            <div class="practical-item">
-                                <strong><i class="fa-solid fa-children"></i> BARNPOLICY:</strong>
-                                <span>Vi firar gärna i vuxet sällskap under middag och fest (spädbarn är varmt välkomna).</span>
-                            </div>
-                        </div>
-                    </section>
+                <!-- OSA Knapp & Info -->
+                <div class="rsvp-cta-card">
+                    <span class="section-tag">SVAR ANHÅLLES</span>
+                    <h2 class="fund-title" style="margin-bottom: 0.8rem;">O. S. A.</h2>
+                    <p class="rsvp-cta-desc">
+                        Vänligen inkom med ert besked via vårt officiella OSA-formulär så snart som möjligt så att vi kan planera mat, dryck och sittplatser.
+                    </p>
 
+                    <div class="rsvp-btn-box">
+                        <a href="https://forms.gle/2NHEji7AxaPw4fmL9" target="_blank" rel="noopener noreferrer" class="antique-rsvp-main-btn">
+                            <span>Öppna OSA-formulär</span>
+                            <span class="btn-arrow">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <p class="rsvp-sub-note">
+                        Formuläret öppnas i en ny flik via Google Forms.
+                    </p>
                 </div>
 
             </div>
 
-            <!-- Horisontell tidningslinje -->
-            <div class="newspaper-hr"></div>
-
-
-            <!-- ============================================================
-                 4. THE WEDDING CROSSWORD (INTERAKTIVT KORSORD)
-                 ============================================================ -->
-            <section class="crossword-section" id="crossword">
-                <div class="article-header text-center">
-                    <span class="section-tag">DAILY INTERACTIVE PUZZLE</span>
-                    <h3 class="article-main-title">THE WEDDING CROSSWORD</h3>
-                    <div class="article-subline">Testa era kunskaper om brudparet! Fyll i rutorna och klicka på ”Rätta Svaren”.</div>
-                </div>
-
-                <div class="crossword-container">
-                    
-                    <!-- Korsordsrutnät -->
-                    <div class="crossword-board-wrap">
-                        <div class="crossword-grid" id="crosswordGrid">
-                            <!-- Rutorna renderas och hanteras av JavaScript -->
-                        </div>
-                        <div class="crossword-actions">
-                            <button type="button" id="checkCrosswordBtn" class="solid-press-btn"><i class="fa-solid fa-check"></i> RÄTTA SVAREN</button>
-                            <button type="button" id="resetCrosswordBtn" class="outline-press-btn"><i class="fa-solid fa-rotate-right"></i> ÅTERSTÄLL</button>
-                            <span id="crosswordFeedback" class="crossword-feedback"></span>
-                        </div>
-                    </div>
-
-                    <!-- Ledtrådar (Clues) -->
-                    <div class="crossword-clues-box">
-                        <h4 class="clues-title">LEDTRÅDAR:</h4>
-                        
-                        <div class="clue-section">
-                            <h5>VÅGRÄTT (ACROSS)</h5>
-                            <ol class="clues-list">
-                                <li><strong>1.</strong> Brudgummens namn (5 bokstäver)</li>
-                                <li><strong>3.</strong> Staden i Polen där frieriet ägde rum (6 bokstäver)</li>
-                                <li><strong>4.</strong> Antal år paret firar tillsammans i år (3 bokstäver: TIO)</li>
-                            </ol>
-                        </div>
-
-                        <div class="clue-section">
-                            <h5>LODRÄTT (DOWN)</h5>
-                            <ol class="clues-list">
-                                <li><strong>2.</strong> Brudens namn (5 bokstäver)</li>
-                                <li><strong>5.</strong> Den historiska badorten där bröllopsfesten hålls (11 bokstäver: GUSTAFSBERG)</li>
-                            </ol>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Horisontell tidningslinje -->
-            <div class="newspaper-hr"></div>
-
-
-            <!-- ============================================================
-                 5. HONEYMOON FUND & OSA (RSVP)
-                 ============================================================ -->
-            <section class="rsvp-fund-section" id="rsvp">
-                
-                <div class="rsvp-fund-grid">
-                    
-                    <!-- Vänster: Honeymoon Fund / Gåvor -->
-                    <div class="fund-box">
-                        <div class="article-header">
-                            <span class="section-tag">GIFT REGISTRY</span>
-                            <h3 class="article-main-title">HONEYMOON FUND</h3>
-                        </div>
-                        <p class="fund-intro">Er närvaro på vår bröllopsdag är den allra finaste gåvan vi kan få! För de som ändå önskar uppmärksamma dagen med en bröllopsgåva tar vi tacksamt emot ett bidrag till vår stundande smekmånad.</p>
-                        
-                        <div class="gift-qr-box">
-                            <div class="qr-mockup">
-                                <i class="fa-solid fa-plane-departure qr-icon"></i>
-                                <span class="qr-label">SMEKMÅNAD 2027</span>
-                            </div>
-                            <div class="qr-info">
-                                <strong>BIDRAG TILL VÅR RESA</strong>
-                                <p>Swish eller överföring kan ges vid bröllopet eller via Toastmasters.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Höger: Interaktivt OSA-formulär -->
-                    <div class="rsvp-form-box">
-                        <div class="article-header">
-                            <span class="section-tag">OFFICIAL RSVP</span>
-                            <h3 class="article-main-title">SVAR ANHÅLLES (O.S.V.)</h3>
-                            <div class="article-subline">Vänligen inkom med ert besked nedan</div>
-                        </div>
-
-                        <form id="gazetteRsvpForm" class="gazette-form">
-                            
-                            <div class="form-row">
-                                <div class="field-wrap">
-                                    <label for="rsvpName">FÖRLAGANS NAMN (DITT NAMN) *</label>
-                                    <input type="text" id="rsvpName" name="rsvpName" required placeholder="För- och efternamn">
-                                </div>
-                                <div class="field-wrap">
-                                    <label for="rsvpEmail">E-POSTADRESS *</label>
-                                    <input type="email" id="rsvpEmail" name="rsvpEmail" required placeholder="din.epost@adress.se">
-                                </div>
-                            </div>
-
-                            <div class="field-wrap">
-                                <label>DELTAGANDE *</label>
-                                <div class="radio-row">
-                                    <label class="radio-pill">
-                                        <input type="radio" name="attendance" value="ja" checked>
-                                        <span>Ja, kommer med stor glädje!</span>
-                                    </label>
-                                    <label class="radio-pill">
-                                        <input type="radio" name="attendance" value="nej">
-                                        <span>Nej, har tyvärr förhinder</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="field-wrap">
-                                    <label for="rsvpPartySize">ANTAL PERSONER</label>
-                                    <select id="rsvpPartySize" name="rsvpPartySize">
-                                        <option value="1">1 person</option>
-                                        <option value="2">2 personer (medföljande)</option>
-                                    </select>
-                                </div>
-                                <div class="field-wrap" id="rsvpPlusOneWrapper" style="display: none;">
-                                    <label for="rsvpPlusOne">NAMN PÅ MEDFÖLJANDE</label>
-                                    <input type="text" id="rsvpPlusOne" name="rsvpPlusOne" placeholder="Medföljandes namn">
-                                </div>
-                            </div>
-
-                            <div class="field-wrap">
-                                <label for="rsvpDietary">SPECIALKOST &amp; ALLERGIER</label>
-                                <input type="text" id="rsvpDietary" name="rsvpDietary" placeholder="T.ex. vegetarian, gluten, nötter...">
-                            </div>
-
-                            <div class="field-wrap">
-                                <label for="rsvpSongMessage">ÖNSKELÅT TILL DANSGOLVET / HÄLSNING</label>
-                                <textarea id="rsvpSongMessage" name="rsvpSongMessage" rows="2" placeholder="Skriv en låt eller hälsning..."></textarea>
-                            </div>
-
-                            <button type="submit" class="solid-press-btn submit-btn">
-                                <i class="fa-solid fa-paper-plane"></i> SKICKA TELEGRAM (O.S.V.)
-                            </button>
-
-                        </form>
-
-                        <!-- Bekräftelsemeddelande -->
-                        <div id="rsvpDoneCard" class="rsvp-done-card" style="display: none;">
-                            <i class="fa-solid fa-stamp stamp-icon"></i>
-                            <h4>SVARET HAR REGISTRERATS!</h4>
-                            <p>Tack för ditt besked. Uppgifterna har sparats i redaktionens register.</p>
-                            <div id="rsvpSummaryBox" class="rsvp-summary-box"></div>
-                            <button type="button" id="rsvpResetBtn" class="outline-press-btn small-btn">Ändra uppgifter</button>
-                        </div>
-
-                        <!-- Alternativ Google Forms-länk -->
-                        <div class="google-form-note">
-                            Föredrar du Google Form? <a href="https://forms.gle/2NHEji7AxaPw4fmL9" target="_blank" rel="noopener noreferrer">Klicka här för att öppna formuläret &rarr;</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- ============================================================
-                 FOOTER (KOLOFON & TO BE CONTINUED)
-                 ============================================================ -->
-            <footer class="newspaper-colophon">
-                <div class="colophon-top-border"></div>
-                <div class="colophon-content">
-                    <div class="colophon-left">
-                        <span class="colophon-title">THE WEDDING NEWS</span>
-                        <p>Specialutgåva tryckt till ära för Hanna &amp; Rubens bröllop.</p>
-                    </div>
-                    <div class="colophon-center">
-                        <span class="quote-italic">”All because two people fell in love.”</span>
-                    </div>
-                    <div class="colophon-right">
-                        <span class="to-be-continued">To be continued . . .</span>
-                    </div>
-                </div>
-                <div class="colophon-copyright">
-                    &copy; 2027 Hanna &amp; Ruben • Gustafsbergs Badrestaurang, Uddevalla
-                </div>
-            </footer>
-
         </div>
-    </div>
+    </section>
+
+
+    <!-- ============================================================
+         FOOTER (KOLOFON & COPYRIGHT I ANRIK STIL)
+         ============================================================ -->
+    <footer class="vintage-footer">
+        <div class="vintage-container">
+            <div class="footer-content">
+                <div class="footer-logo">Hanna &amp; Ruben</div>
+                <div class="footer-quote">”All because two people fell in love.”</div>
+                <p style="font-size: 0.95rem; color: rgba(255,255,255,0.85); font-style: italic;">
+                    Lördagen den 7 augusti 2027 • Gustafsbergs Badrestaurang, Uddevalla
+                </p>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2027 Hanna &amp; Ruben • Välkomna till vårt bröllop
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

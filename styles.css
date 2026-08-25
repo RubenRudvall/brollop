@@ -1,1181 +1,1347 @@
 /* ==========================================================================
-   THE WEDDING NEWS – AUTHENTIC VINTAGE BROADSHEET DESIGN SYSTEM
+   HANNA & RUBEN BRÖLLOP – KLASSISK ANRIK & GAMMAL STIL DESIGN SYSTEM
    ========================================================================== */
 
+/* 1. VARIABLER & DESIGN TOKENS */
 :root {
-    /* Color Palette: Warm Newsprint, Dark Ink, Sharp Rules */
-    --bg-paper: #FBF9F5;
-    --bg-card: #FFFFFF;
-    --bg-muted: #F3EFE6;
-    
-    --ink-black: #111111;
-    --ink-dark: #2A2A2A;
-    --ink-muted: #555555;
-    --ink-light: #777777;
+    /* Färgpalett: Anrik Salvia, Dammrosa, Varmt Pergament/Krämvit, Antik Mässing/Guld */
+    --sage-dark: #2c3b31;
+    --sage-primary: #4a6856;
+    --sage-medium: #698776;
+    --sage-light: #eef3ef;
+    --sage-subtle: #d3dfd7;
 
-    --rule-black: #111111;
-    --rule-light: #DCD7CD;
-    --rule-double: #111111;
+    --rose-dark: #6e3c3c;
+    --rose-primary: #a86c6c;
+    --rose-medium: #c28c8c;
+    --rose-light: #fbf5f5;
+    --rose-subtle: #eedada;
 
-    /* Typography */
-    --font-gothic: 'UnifrakturMaguntia', 'Old English Text MT', serif;
-    --font-cinzel: 'Cinzel', Georgia, serif;
-    --font-serif-headline: 'Playfair Display', Georgia, serif;
-    --font-body: 'Georgia', serif;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --cream-bg: #f9f6ef;
+    --cream-card: #ffffff;
+    --cream-soft: #f2ece0;
+    --cream-border: #dfd5c2;
 
-    /* Dimensions */
-    --sheet-max-width: 1140px;
+    --brass-gold: #bfa15f;
+    --brass-dark: #8c7134;
+    --brass-light: #e8dbbe;
+    --brass-glow: rgba(191, 161, 95, 0.35);
+
+    --text-main: #242925;
+    --text-muted: #535d56;
+    --text-light: #7c8780;
+
+    /* Gammaldags & Romantisk Typografi */
+    --font-heading-antique: 'EB Garamond', Garamond, 'Playfair Display', Georgia, serif;
+    --font-heading-roman: 'Cinzel', 'EB Garamond', Georgia, serif;
+    --font-heading-script: 'Pinyon Script', 'Alex Brush', cursive;
+    --font-body: 'EB Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+    /* Layout & Skuggor */
+    --container-max: 1120px;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 14px;
+    --shadow-soft: 0 8px 30px rgba(44, 59, 49, 0.06);
+    --shadow-hover: 0 14px 40px rgba(44, 59, 49, 0.12);
+    --transition-smooth: all 0.35s ease;
 }
 
-/* Reset & Universal Setup */
-*, *::before, *::after {
+/* 2. RESET & BASSTILAR */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border-radius: 0px !important; /* Alla element har strikt skarpa hörn */
 }
 
 html {
     scroll-behavior: smooth;
-    font-size: 16px;
-    background-color: #EAE6DC;
+    font-size: 17px;
 }
 
 body {
-    background-color: var(--bg-paper);
-    color: var(--ink-black);
     font-family: var(--font-body);
-    font-size: 0.98rem;
-    line-height: 1.6;
+    background-color: var(--cream-bg);
+    color: var(--text-main);
+    line-height: 1.75;
     -webkit-font-smoothing: antialiased;
-    padding: 24px 0 50px;
+    overflow-x: hidden;
 }
 
-/* Huvudark (Newsprint Sheet) */
-.newsprint-outer-wrapper {
-    width: 100%;
-    padding: 0 16px;
-}
-
-.newsprint-sheet {
-    max-width: var(--sheet-max-width);
-    margin: 0 auto;
-    background-color: var(--bg-paper);
-    border: 1px solid var(--rule-black);
-    padding: 28px 36px 45px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* Typography Basics */
-h1, h2, h3, h4, h5, h6 {
-    color: var(--ink-black);
-    font-weight: 700;
-    line-height: 1.15;
-}
-
-p {
-    margin-bottom: 12px;
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 a {
-    color: var(--ink-black);
-    transition: all 0.2s ease;
+    color: inherit;
+    text-decoration: none;
 }
 
-/* ==========================================================================
-   TOP HEADER (MASTHEAD)
-   ========================================================================== */
-
-.masthead-section {
-    margin-bottom: 24px;
+/* Container för sektioner */
+.vintage-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 1.8rem;
 }
 
-/* 1. Lokal och Adress längst upp */
-.masthead-venue-bar {
+/* Gammaldags avdelare */
+.antique-divider {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--ink-dark);
-    padding-bottom: 5px;
-}
-
-/* 2. Tunn linje och centrerad tagline */
-.masthead-tagline-bar {
-    border-top: 1px solid var(--rule-black);
-    border-bottom: 1px solid var(--rule-black);
-    text-align: center;
-    padding: 5px 0;
-    margin-top: 3px;
-    font-family: var(--font-sans);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--ink-dark);
-    text-transform: uppercase;
-}
-
-/* 3. Stor Gotisk Huvudtitel "The Wedding News" */
-.masthead-logo-wrap {
-    text-align: center;
-    padding: 10px 0 6px;
-}
-
-.main-newspaper-title {
-    font-family: var(--font-gothic);
-    font-size: 5.6rem;
-    font-weight: 400;
-    line-height: 0.95;
-    letter-spacing: 1px;
-    color: var(--ink-black);
-    user-select: none;
-}
-
-/* 4. Inramad datumpanel (mellan två horisontella linjer) */
-.masthead-dateline-panel {
-    border-top: 1px solid var(--rule-black);
-    border-bottom: 3px double var(--rule-black);
-    padding: 6px 0;
-    margin-top: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--font-sans);
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--ink-black);
-}
-
-.panel-center {
-    font-family: var(--font-cinzel);
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-}
-
-/* 5. Sticky Navigation */
-.newspaper-nav {
-    position: sticky;
-    top: 0;
-    background: var(--bg-paper);
-    border-bottom: 1px solid var(--rule-black);
-    padding: 8px 0;
-    margin-top: 4px;
-    z-index: 100;
-}
-
-.nav-links-container {
-    display: flex;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 14px;
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    gap: 1.2rem;
+    margin: 2rem 0;
 }
 
-.nav-item {
-    text-decoration: none;
-    padding: 2px 4px;
-}
-
-.nav-item:hover {
-    text-decoration: underline;
-}
-
-.nav-dot {
-    color: var(--ink-light);
-    font-size: 0.65rem;
-}
-
-.nav-highlight {
-    background: var(--ink-black);
-    color: var(--bg-paper) !important;
-    padding: 3px 12px;
-    font-weight: 700;
-}
-
-.nav-highlight:hover {
-    background: var(--ink-muted);
-    text-decoration: none;
-}
-
-/* ==========================================================================
-   HERO-SEKTION (CELEBRATION OF THE UNION)
-   ========================================================================= */
-
-.hero-edition-section {
-    padding: 10px 0 20px;
-}
-
-.hero-headline-block {
-    text-align: center;
-    border-bottom: 1px solid var(--rule-black);
-    padding-bottom: 16px;
-    margin-bottom: 20px;
-}
-
-.hero-union-title {
-    font-family: var(--font-cinzel);
-    font-size: 2.8rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    line-height: 1.15;
-    text-transform: uppercase;
-}
-
-.names-span {
-    font-family: var(--font-serif-headline);
-    font-size: 3.4rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.ampersand {
-    font-family: var(--font-serif-headline);
-    font-weight: 400;
-    font-style: italic;
-}
-
-.hero-subdeck {
-    font-family: var(--font-body);
-    font-size: 1.18rem;
-    font-style: italic;
-    color: var(--ink-dark);
-    max-width: 780px;
-    margin: 8px auto 0;
-}
-
-/* Hero-foto */
-.hero-image-wrapper {
-    margin-bottom: 10px;
-}
-
-.newspaper-photo-frame {
-    border: 1px solid var(--rule-black);
-    padding: 6px;
-    background: #FFFFFF;
-    line-height: 0;
-}
-
-.hero-newspaper-img {
-    width: 100%;
-    height: auto;
-    max-height: 480px;
-    object-fit: cover;
-    object-position: center 20%;
-    display: block;
-    filter: grayscale(100%) contrast(110%) brightness(98%);
-    transition: filter 0.3s ease;
-}
-
-.hero-newspaper-img:hover {
-    filter: grayscale(85%) contrast(108%);
-}
-
-.photo-caption-strip {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    color: var(--ink-muted);
-    border-bottom: 1px solid var(--rule-light);
-    padding: 8px 0;
-    margin-top: 4px;
-}
-
-.photo-caption-strip strong {
-    color: var(--ink-black);
-}
-
-.caption-credits {
-    font-size: 0.7rem;
-    letter-spacing: 1px;
-}
-
-/* Horisontell tidningslinje */
-.newspaper-hr {
+.antique-divider .divider-line {
+    flex: 1;
     height: 1px;
-    background: var(--rule-black);
-    margin: 24px 0;
+    background: linear-gradient(to right, transparent, var(--brass-gold), transparent);
 }
 
-.column-inner-hr {
-    height: 1px;
-    background: var(--rule-light);
-    margin: 20px 0;
+.antique-divider .divider-icon {
+    color: var(--brass-gold);
+    font-size: 1.4rem;
 }
 
-/* ==========================================================================
-   RUTNÄT & TIDNINGSSPALTER (GRID)
-   ========================================================================== */
-
-.newspaper-main-grid {
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 36px;
-    align-items: start;
-}
-
-.grid-column.left-main-col {
-    border-right: 1px solid var(--rule-light);
-    padding-right: 32px;
-}
-
-/* Sektionsrubriker */
-.article-header {
-    border-bottom: 2px solid var(--rule-black);
-    padding-bottom: 8px;
-    margin-bottom: 14px;
-}
-
-.article-header.text-center {
+/* Sektionsrubriker i anrik stil */
+.section-header {
     text-align: center;
+    margin-bottom: 3.5rem;
 }
 
 .section-tag {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 2px;
+    display: inline-block;
+    font-family: var(--font-heading-roman);
+    font-size: 0.8rem;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--ink-muted);
-    margin-bottom: 2px;
+    color: var(--brass-dark);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
 }
 
-.article-main-title {
-    font-family: var(--font-cinzel);
-    font-size: 1.65rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.article-subline {
-    font-family: var(--font-body);
-    font-size: 0.92rem;
-    font-style: italic;
-    color: var(--ink-muted);
-    margin-top: 2px;
-}
-
-/* ==========================================================================
-   1. THE JOURNEY OF US (VÅR HISTORIA)
-   ========================================================================== */
-
-.news-dropcap {
-    float: left;
-    font-family: var(--font-serif-headline);
-    font-size: 3.8rem;
-    line-height: 0.8;
-    padding-top: 4px;
-    padding-right: 8px;
-    font-weight: 700;
-    color: var(--ink-black);
-}
-
-.lead-p {
-    font-size: 1.05rem;
+.section-title {
+    font-family: var(--font-heading-antique);
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
     font-weight: 500;
-    text-align: justify;
+    color: var(--sage-dark);
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
 }
 
-.article-text-body p {
-    text-align: justify;
-    margin-bottom: 12px;
-}
-
-/* Milestones Along the Way */
-.milestones-box {
-    border: 1px solid var(--rule-black);
-    background: var(--bg-card);
-    padding: 16px;
-    margin-top: 16px;
-}
-
-.milestones-heading {
-    font-family: var(--font-cinzel);
-    font-size: 0.92rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    border-bottom: 1px solid var(--rule-black);
-    padding-bottom: 6px;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-}
-
-.milestones-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.milestones-list li {
-    display: grid;
-    grid-template-columns: 55px 1fr;
-    gap: 10px;
-    font-size: 0.88rem;
-    border-bottom: 1px dashed var(--rule-light);
-    padding-bottom: 8px;
-}
-
-.milestones-list li:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.milestone-year {
-    font-family: var(--font-cinzel);
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--ink-black);
-}
-
-.milestone-desc strong {
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-}
-
-/* ==========================================================================
-   2. WEDDING SCHEDULE (PROGRAM & SCHEMA)
-   ========================================================================== */
-
-.schedule-timeline {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--rule-black);
-    background: var(--bg-card);
-}
-
-.schedule-item {
-    display: grid;
-    grid-template-columns: 45px 65px 1fr;
-    gap: 12px;
-    align-items: center;
-    border-bottom: 1px solid var(--rule-light);
-    padding: 12px 14px;
-    transition: background 0.15s ease;
-}
-
-.schedule-item:last-child {
-    border-bottom: none;
-}
-
-.schedule-item:hover {
-    background: var(--bg-muted);
-}
-
-.schedule-icon-cell {
+.section-subtitle {
+    font-family: var(--font-heading-antique);
+    font-style: italic;
     font-size: 1.25rem;
-    color: var(--ink-black);
-    text-align: center;
+    color: var(--text-muted);
+    max-width: 620px;
+    margin: 0 auto;
 }
 
-.schedule-time-cell {
-    font-family: var(--font-cinzel);
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--ink-black);
-    border-right: 1px solid var(--rule-light);
-    padding-right: 8px;
-}
-
-.event-title {
-    font-family: var(--font-cinzel);
-    font-size: 0.92rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    margin-bottom: 1px;
-}
-
-.event-loc {
-    font-family: var(--font-sans);
-    font-size: 0.76rem;
-    font-weight: 600;
-    color: var(--ink-muted);
-    text-transform: uppercase;
-}
-
-.event-desc {
-    font-size: 0.85rem;
-    color: var(--ink-dark);
-    margin: 2px 0 0;
-}
-
-/* Praktisk Info Grid */
-.practical-items-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    border: 1px solid var(--rule-black);
-    background: var(--bg-card);
-    padding: 16px;
-}
-
-.practical-item {
-    font-size: 0.88rem;
-    border-bottom: 1px dashed var(--rule-light);
-    padding-bottom: 8px;
-}
-
-.practical-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.practical-item strong {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    letter-spacing: 1px;
-    margin-bottom: 2px;
-}
 
 /* ==========================================================================
-   3. STATISTICS / SIFFERFAKTA
+   3. KLASSISK ANRIK VINTAGE-MENY (ANTIQUE HEADER NAV) & MOBILMENY
    ========================================================================== */
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    border: 1px solid var(--rule-black);
-    background: var(--bg-card);
-    padding: 12px;
+.antique-header-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(30, 42, 34, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(191, 161, 95, 0.4);
+    padding: 0.9rem 2rem;
+    transition: var(--transition-smooth);
 }
 
-.stat-card {
-    text-align: center;
-    border: 1px solid var(--rule-light);
-    padding: 10px 4px;
+.antique-header-nav.nav-scrolled {
+    background: rgba(249, 246, 239, 0.97);
+    border-top: 1px solid var(--brass-gold);
+    border-bottom: 1px solid var(--brass-gold);
+    box-shadow: 0 4px 25px rgba(44, 59, 49, 0.1);
+    padding: 0.65rem 2rem;
 }
 
-.stat-number {
-    display: block;
-    font-family: var(--font-cinzel);
-    font-size: 1.8rem;
-    font-weight: 800;
-    line-height: 1;
-    color: var(--ink-black);
-}
-
-.stat-label {
-    font-family: var(--font-sans);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--ink-muted);
-    text-transform: uppercase;
-    margin-top: 4px;
-    display: block;
-}
-
-/* ==========================================================================
-   4. THE WEDDING CROSSWORD (INTERAKTIVT KORSORD)
-   ========================================================================== */
-
-.crossword-section {
-    padding: 10px 0;
-}
-
-.crossword-container {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 36px;
-    align-items: start;
-    border: 1px solid var(--rule-black);
-    background: var(--bg-card);
-    padding: 24px;
-}
-
-.crossword-board-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.crossword-grid {
-    display: grid;
-    grid-template-columns: repeat(11, 32px);
-    grid-template-rows: repeat(11, 32px);
-    gap: 1px;
-    background: var(--rule-black);
-    border: 2px solid var(--rule-black);
-    margin-bottom: 16px;
-}
-
-/* Rutor inuti korsordet */
-.cw-cell {
-    position: relative;
-    background: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cw-cell.blocked {
-    background: #111111;
-}
-
-.cw-number {
-    position: absolute;
-    top: 1px;
-    left: 2px;
-    font-family: var(--font-sans);
-    font-size: 0.55rem;
-    font-weight: 800;
-    color: #333333;
-    pointer-events: none;
-}
-
-.cw-input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    text-align: center;
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    background: transparent;
-    color: var(--ink-black);
-}
-
-.cw-input:focus {
-    outline: 2px solid var(--ink-black);
-    background: #FFFCE8;
-}
-
-.cw-input.correct {
-    background: #E8F5E9;
-    color: #2E7D32;
-}
-
-.cw-input.incorrect {
-    background: #FFEBEE;
-    color: #C62828;
-}
-
-.crossword-actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.crossword-feedback {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 700;
-    width: 100%;
-    text-align: center;
-    margin-top: 6px;
-}
-
-.crossword-clues-box {
-    border-left: 1px solid var(--rule-light);
-    padding-left: 24px;
-}
-
-.clues-title {
-    font-family: var(--font-cinzel);
-    font-size: 1.1rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-}
-
-.clue-section {
-    margin-bottom: 14px;
-}
-
-.clue-section h5 {
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    border-bottom: 1px solid var(--rule-light);
-    padding-bottom: 3px;
-    margin-bottom: 6px;
-}
-
-.clues-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    font-size: 0.85rem;
-}
-
-/* ==========================================================================
-   5. HONEYMOON FUND & OSA (RSVP)
-   ========================================================================== */
-
-.rsvp-fund-section {
-    padding: 10px 0;
-}
-
-.rsvp-fund-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 36px;
-    align-items: start;
-}
-
-/* Honeymoon Fund Box */
-.fund-box {
-    border: 1px solid var(--rule-black);
-    background: var(--bg-card);
-    padding: 24px;
-}
-
-.fund-intro {
-    font-size: 0.92rem;
-    text-align: justify;
-    margin-bottom: 18px;
-}
-
-.gift-qr-box {
-    border: 1px solid var(--rule-black);
-    padding: 14px;
-    background: var(--bg-muted);
-    display: flex;
-    gap: 16px;
-    align-items: center;
-}
-
-.qr-mockup {
-    width: 80px;
-    height: 80px;
-    background: #111111;
-    color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.qr-icon {
-    font-size: 1.8rem;
-    color: #FFFFFF;
-}
-
-.qr-label {
-    font-family: var(--font-sans);
-    font-size: 0.55rem;
-    letter-spacing: 1px;
-    margin-top: 4px;
-}
-
-.qr-info strong {
-    font-family: var(--font-cinzel);
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    display: block;
-    margin-bottom: 2px;
-}
-
-.qr-info p {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    color: var(--ink-muted);
-    margin: 0;
-}
-
-/* RSVP Form Box */
-.rsvp-form-box {
-    border: 2px solid var(--rule-black);
-    background: var(--bg-card);
-    padding: 24px;
-}
-
-.gazette-form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-}
-
-.field-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.field-wrap label {
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--ink-black);
-}
-
-.field-wrap input[type="text"],
-.field-wrap input[type="email"],
-.field-wrap select,
-.field-wrap textarea {
-    width: 100%;
-    padding: 9px 10px;
-    border: 1px solid var(--rule-black);
-    background: var(--bg-paper);
-    font-family: var(--font-sans);
-    font-size: 0.88rem;
-    color: var(--ink-black);
-}
-
-.field-wrap input:focus,
-.field-wrap select:focus,
-.field-wrap textarea:focus {
-    outline: 2px solid var(--ink-black);
-    background: #FFFFFF;
-}
-
-.radio-row {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-.radio-pill {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--font-sans);
-    font-size: 0.82rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.radio-pill input {
-    cursor: pointer;
-    accent-color: var(--ink-black);
-}
-
-.submit-btn {
-    margin-top: 6px;
-    padding: 12px 20px;
-}
-
-/* Bekräftelsekort */
-.rsvp-done-card {
-    border: 1px solid var(--rule-black);
-    background: var(--bg-muted);
-    padding: 20px;
-    text-align: center;
-}
-
-.stamp-icon {
-    font-size: 2.4rem;
-    margin-bottom: 6px;
-}
-
-.rsvp-done-card h4 {
-    font-family: var(--font-cinzel);
-    font-size: 1.3rem;
-    margin-bottom: 4px;
-}
-
-.rsvp-summary-box {
-    border: 1px solid var(--rule-light);
-    background: #FFFFFF;
-    padding: 12px;
-    text-align: left;
-    margin: 12px auto;
-    font-family: var(--font-sans);
-    font-size: 0.82rem;
-}
-
-.google-form-note {
-    text-align: center;
-    border-top: 1px dashed var(--rule-light);
-    padding-top: 12px;
-    margin-top: 14px;
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    color: var(--ink-muted);
-}
-
-.google-form-note a {
-    color: var(--ink-black);
-    font-weight: 700;
-    text-decoration: underline;
-}
-
-/* Knappar */
-.solid-press-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: var(--ink-black);
-    color: var(--bg-paper);
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 9px 18px;
-    border: 1px solid var(--ink-black);
-    cursor: pointer;
-}
-
-.solid-press-btn:hover {
-    background: var(--ink-dark);
-    color: #FFFFFF;
-}
-
-.outline-press-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: transparent;
-    color: var(--ink-black);
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 9px 18px;
-    border: 1px solid var(--rule-black);
-    cursor: pointer;
-}
-
-.outline-press-btn:hover {
-    background: var(--ink-black);
-    color: var(--bg-paper);
-}
-
-.small-btn {
-    padding: 6px 12px;
-    font-size: 0.72rem;
-}
-
-/* ==========================================================================
-   FOOTER (KOLOFON)
-   ========================================================================== */
-
-.newspaper-colophon {
-    margin-top: 35px;
-}
-
-.colophon-top-border {
-    border-top: 3px double var(--rule-black);
-    margin-bottom: 18px;
-}
-
-.colophon-content {
+.nav-inner-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--rule-light);
 }
 
-.colophon-title {
-    font-family: var(--font-gothic);
-    font-size: 1.8rem;
-    display: block;
+.antique-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #ffffff;
+    transition: var(--transition-smooth);
+}
+
+.antique-header-nav.nav-scrolled .antique-nav-logo {
+    color: var(--sage-dark);
+}
+
+.logo-script {
+    font-family: var(--font-heading-script);
+    font-size: 2rem;
     line-height: 1;
 }
 
-.colophon-left p {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    color: var(--ink-muted);
-    margin: 4px 0 0;
-}
-
-.quote-italic {
-    font-family: var(--font-body);
+.logo-amp {
+    font-family: var(--font-heading-antique);
     font-style: italic;
-    font-size: 0.95rem;
-    color: var(--ink-muted);
+    font-size: 1.3rem;
+    color: var(--brass-light);
 }
 
-.to-be-continued {
-    font-family: var(--font-serif-headline);
-    font-style: italic;
-    font-size: 1.2rem;
-    font-weight: 700;
+.antique-header-nav.nav-scrolled .logo-amp {
+    color: var(--brass-dark);
 }
 
-.colophon-copyright {
-    text-align: center;
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    color: var(--ink-muted);
-    padding-top: 12px;
+/* Navigationslänkar för desktop */
+.antique-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
 }
+
+.antique-nav-link {
+    font-family: var(--font-heading-antique);
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.92);
+    position: relative;
+    padding: 0.2rem 0;
+    transition: var(--transition-smooth);
+}
+
+.antique-header-nav.nav-scrolled .antique-nav-link {
+    color: var(--sage-dark);
+}
+
+.antique-nav-link:hover {
+    color: var(--brass-light);
+}
+
+.antique-header-nav.nav-scrolled .antique-nav-link:hover {
+    color: var(--brass-dark);
+}
+
+.nav-sep {
+    color: var(--brass-gold);
+    font-size: 0.65rem;
+    opacity: 0.7;
+}
+
+.antique-nav-link.nav-rsvp-btn {
+    border: 1px solid var(--brass-gold);
+    padding: 0.35rem 1.1rem;
+    border-radius: var(--radius-sm);
+    background: rgba(191, 161, 95, 0.2);
+}
+
+.antique-nav-link.nav-rsvp-btn:hover {
+    background: var(--brass-gold);
+    color: #ffffff !important;
+}
+
+/* Mobil Hamburgare Knapp */
+.mobile-nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.mobile-nav-toggle span {
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: var(--transition-smooth);
+}
+
+.antique-header-nav.nav-scrolled .mobile-nav-toggle span {
+    background-color: var(--sage-dark);
+}
+
+.mobile-nav-toggle.is-active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-nav-toggle.is-active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-nav-toggle.is-active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
 
 /* ==========================================================================
-   RESPONSIV ANPASSNING (MOBIL & TABLET)
+   4. HELSKÄRMS-HERO (100VH COVER MED GAMMAL STIL TYPOGRAFI)
    ========================================================================== */
+.hero-full-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 680px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
 
-@media (max-width: 900px) {
-    .newsprint-sheet {
-        padding: 20px 18px 35px;
+.hero-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-full-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: brightness(0.88) contrast(1.02);
+}
+
+.hero-overlay-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(
+        to bottom,
+        rgba(25, 35, 28, 0.45) 0%,
+        rgba(25, 35, 28, 0.1) 30%,
+        rgba(25, 35, 28, 0.75) 70%,
+        rgba(25, 35, 28, 0.98) 100%
+    );
+}
+
+.hero-bottom-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 1.5rem 3.5rem;
+    max-width: 950px;
+    animation: fadeInGently 1.4s ease-out;
+}
+
+.hero-vintage-ornament-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.hero-vintage-ornament-top .ornament-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--brass-light));
+}
+
+.hero-vintage-ornament-top .ornament-line:last-child {
+    background: linear-gradient(to left, transparent, var(--brass-light));
+}
+
+.hero-vintage-ornament-top .ornament-glyph {
+    color: var(--brass-light);
+    font-size: 1.4rem;
+}
+
+.hero-venue-tag {
+    font-family: var(--font-heading-roman);
+    font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--brass-light);
+    margin-bottom: 0.6rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.hero-main-title {
+    font-family: var(--font-heading-antique);
+    font-size: clamp(3rem, 7.5vw, 5.8rem);
+    font-weight: 500;
+    letter-spacing: 4px;
+    line-height: 1.1;
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    margin-bottom: 0.2rem;
+}
+
+.hero-main-title .ampersand {
+    font-family: var(--font-heading-antique);
+    font-style: italic;
+    color: var(--brass-light);
+    font-weight: 400;
+}
+
+.hero-script-tag {
+    font-family: var(--font-heading-script);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: var(--brass-light);
+    margin-bottom: 0.4rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    line-height: 1.1;
+}
+
+.hero-date-line {
+    font-family: var(--font-heading-antique);
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    letter-spacing: 2px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 1.8rem;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.hero-scroll-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--brass-light);
+    font-family: var(--font-heading-antique);
+    font-style: italic;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    transition: var(--transition-smooth);
+    opacity: 0.85;
+}
+
+.hero-scroll-btn:hover {
+    opacity: 1;
+    color: #ffffff;
+    transform: translateY(3px);
+}
+
+.hero-scroll-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--brass-light);
+    stroke-width: 1.6;
+    fill: none;
+}
+
+@keyframes fadeInGently {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
-    .main-newspaper-title {
-        font-size: 4rem;
-    }
-
-    .hero-union-title {
-        font-size: 2.2rem;
-    }
-
-    .names-span {
-        font-size: 2.6rem;
-    }
-
-    .newspaper-main-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .grid-column.left-main-col {
-        border-right: none;
-        border-bottom: 1px solid var(--rule-light);
-        padding-right: 0;
-        padding-bottom: 24px;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .crossword-container {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .crossword-clues-box {
-        border-left: none;
-        border-top: 1px solid var(--rule-light);
-        padding-left: 0;
-        padding-top: 18px;
-    }
-
-    .rsvp-fund-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-@media (max-width: 600px) {
-    body {
-        padding: 0;
+
+/* ==========================================================================
+   5. NEDRÄKNINGSKLOCKA (COUNTDOWN)
+   ========================================================================== */
+.countdown-section {
+    background-color: var(--cream-bg);
+    padding: 4rem 1.5rem 3.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--cream-border);
+}
+
+.countdown-box {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.countdown-label {
+    font-family: var(--font-heading-antique);
+    font-size: 1.45rem;
+    font-style: italic;
+    color: var(--sage-dark);
+    margin-bottom: 1.8rem;
+}
+
+.countdown-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+}
+
+.countdown-card {
+    background: var(--cream-card);
+    border: 1px solid var(--brass-light);
+    border-radius: var(--radius-sm);
+    padding: 1.2rem 1.6rem;
+    min-width: 115px;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+}
+
+.countdown-card::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border: 1px solid rgba(191, 161, 95, 0.3);
+    pointer-events: none;
+}
+
+.countdown-number {
+    font-family: var(--font-heading-antique);
+    font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+    font-weight: 600;
+    color: var(--sage-dark);
+    line-height: 1;
+}
+
+.countdown-unit {
+    font-family: var(--font-heading-roman);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--brass-dark);
+    margin-top: 0.4rem;
+}
+
+
+/* ==========================================================================
+   6. THE JOURNEY OF US (VÅR HISTORIA & TIMELINE)
+   ========================================================================== */
+.journey-section {
+    background-color: var(--cream-bg);
+    padding: 6rem 1.5rem;
+}
+
+.journey-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.journey-intro-card {
+    background-color: var(--cream-card);
+    padding: 3.5rem 3rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--cream-border);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+}
+
+.journey-intro-card::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border: 1px solid rgba(191, 161, 95, 0.25);
+    pointer-events: none;
+}
+
+.journey-intro-card p {
+    font-size: 1.12rem;
+    color: var(--text-main);
+    margin-bottom: 1.4rem;
+    line-height: 1.8;
+}
+
+.journey-intro-card p.lead-p {
+    font-family: var(--font-heading-antique);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--sage-dark);
+    line-height: 1.6;
+}
+
+.card-flourish {
+    text-align: center;
+    color: var(--brass-gold);
+    font-size: 1.2rem;
+    letter-spacing: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* Timeline Milestones */
+.milestones-timeline {
+    position: relative;
+    padding-left: 2.8rem;
+}
+
+.milestones-timeline::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 14px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--brass-gold), var(--sage-primary));
+}
+
+.milestone-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.milestone-item:last-child {
+    margin-bottom: 0;
+}
+
+.milestone-svg-node {
+    position: absolute;
+    left: -2.8rem;
+    top: 2px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--cream-card);
+    border: 1px solid var(--brass-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.node-glyph {
+    color: var(--brass-dark);
+    font-size: 0.85rem;
+}
+
+.milestone-year-tag {
+    display: inline-block;
+    font-family: var(--font-heading-roman);
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    color: var(--brass-dark);
+    margin-bottom: 0.2rem;
+}
+
+.milestone-title {
+    font-family: var(--font-heading-antique);
+    font-size: 1.45rem;
+    color: var(--sage-dark);
+    margin-bottom: 0.3rem;
+}
+
+.milestone-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   7. WEDDING SCHEDULE (VIGSEL & MINGEL)
+   ========================================================================== */
+.schedule-section {
+    background-color: var(--sage-light);
+    padding: 6rem 1.5rem;
+    border-top: 1px solid var(--sage-subtle);
+    border-bottom: 1px solid var(--sage-subtle);
+}
+
+.schedule-grid.schedule-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.schedule-card {
+    background: var(--cream-card);
+    border-radius: var(--radius-sm);
+    padding: 2.5rem 2.2rem;
+    border: 1px solid var(--sage-subtle);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    gap: 1.8rem;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.schedule-card::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid rgba(191, 161, 95, 0.25);
+    pointer-events: none;
+}
+
+.schedule-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--brass-gold);
+}
+
+.schedule-badge-time {
+    font-family: var(--font-heading-antique);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--brass-dark);
+    padding-right: 1.4rem;
+    border-right: 1px solid var(--brass-light);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.schedule-event-title {
+    font-family: var(--font-heading-antique);
+    font-size: 1.6rem;
+    color: var(--sage-dark);
+    margin-bottom: 0.25rem;
+}
+
+.schedule-location {
+    font-family: var(--font-heading-antique);
+    font-style: italic;
+    font-size: 1.12rem;
+    color: var(--rose-dark);
+    margin-bottom: 0.5rem;
+}
+
+.schedule-description {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+
+/* ==========================================================================
+   8. PRAKTISK INFO & TOASTMASTERS (MED BILDER)
+   ========================================================================== */
+.practical-section {
+    background-color: var(--rose-light);
+    padding: 6rem 1.5rem;
+}
+
+/* Toastmasters Showcase */
+.toastmasters-showcase-box {
+    background: var(--cream-card);
+    border: 1px solid var(--brass-light);
+    border-radius: var(--radius-sm);
+    padding: 3.5rem 3rem;
+    margin-bottom: 3.5rem;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    text-align: center;
+}
+
+.toastmasters-showcase-box::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border: 1px solid rgba(191, 161, 95, 0.25);
+    pointer-events: none;
+}
+
+.toastmaster-icon {
+    font-size: 2.2rem;
+    color: var(--brass-dark);
+    margin-bottom: 0.4rem;
+}
+
+.toastmasters-title {
+    font-family: var(--font-heading-antique);
+    font-size: 2.2rem;
+    color: var(--sage-dark);
+    margin-bottom: 0.6rem;
+}
+
+.toastmasters-subtitle {
+    font-size: 1.12rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.toastmasters-grid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.toastmaster-profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 280px;
+}
+
+.toastmaster-photo-frame {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    padding: 5px;
+    background: linear-gradient(135deg, var(--brass-light), var(--brass-gold));
+    box-shadow: 0 8px 25px rgba(44, 59, 49, 0.15);
+    margin-bottom: 1.2rem;
+    transition: var(--transition-smooth);
+}
+
+.toastmaster-profile-card:hover .toastmaster-photo-frame {
+    transform: scale(1.04);
+    box-shadow: 0 12px 30px rgba(44, 59, 49, 0.22);
+}
+
+.toastmaster-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.toastmaster-name {
+    font-family: var(--font-heading-antique);
+    font-size: 1.6rem;
+    color: var(--sage-dark);
+    margin-bottom: 0.2rem;
+}
+
+.toastmaster-role {
+    font-family: var(--font-heading-roman);
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--brass-dark);
+}
+
+/* Övriga Praktiska Detaljer */
+.practical-grid.practical-three-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.practical-card {
+    background: var(--cream-card);
+    border-radius: var(--radius-sm);
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--rose-subtle);
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.practical-card::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid rgba(191, 161, 95, 0.2);
+    pointer-events: none;
+}
+
+.practical-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--rose-medium);
+}
+
+.practical-card-icon {
+    font-size: 2rem;
+    color: var(--brass-dark);
+    margin-bottom: 0.8rem;
+}
+
+.practical-card-title {
+    font-family: var(--font-heading-antique);
+    font-size: 1.5rem;
+    color: var(--sage-dark);
+    margin-bottom: 0.6rem;
+}
+
+.practical-card-text {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+
+/* ==========================================================================
+   8.5. GÄSTENS INTERAKTIVA CHECKLISTA
+   ========================================================================== */
+.survival-section {
+    background-color: var(--cream-soft);
+    padding: 6rem 1.5rem;
+    border-top: 1px solid var(--cream-border);
+    border-bottom: 1px solid var(--cream-border);
+}
+
+.guest-checklist-wrap {
+    background: var(--cream-card);
+    border: 1px solid var(--brass-light);
+    border-radius: var(--radius-sm);
+    padding: 3rem 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+}
+
+.guest-checklist-wrap::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid rgba(191, 161, 95, 0.25);
+    pointer-events: none;
+}
+
+.checklist-items-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-bottom: 2.2rem;
+}
+
+.check-item-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.2rem;
+    background-color: var(--cream-bg);
+    border: 1px solid var(--cream-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 1.05rem;
+    transition: var(--transition-smooth);
+    user-select: none;
+}
+
+.check-item-label:hover {
+    background-color: var(--sage-light);
+    border-color: var(--brass-light);
+}
+
+.check-item-label input[type="checkbox"] {
+    display: none;
+}
+
+.check-box-custom {
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid var(--brass-dark);
+    border-radius: 3px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition-smooth);
+}
+
+.check-item-label input:checked+.check-box-custom {
+    background-color: var(--sage-dark);
+    border-color: var(--sage-dark);
+}
+
+.check-item-label input:checked+.check-box-custom::after {
+    content: '✓';
+    color: var(--brass-light);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.check-item-label input:checked~.check-text {
+    text-decoration: line-through;
+    color: var(--text-light);
+}
+
+.checklist-progress-bar-wrap {
+    text-align: center;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background-color: var(--cream-border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.8rem;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--brass-gold), var(--sage-primary));
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+.progress-status-text {
+    font-family: var(--font-heading-roman);
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--brass-dark);
+    font-weight: 600;
+}
+
+
+/* ==========================================================================
+   9. HONEYMOON FUND & OSA (DIREKTKNAPP TILL FORMULÄR)
+   ========================================================================== */
+.rsvp-section {
+    background-color: var(--sage-light);
+    padding: 6.5rem 1.5rem;
+    border-top: 1px solid var(--sage-subtle);
+}
+
+.rsvp-dual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+/* Smekmånadskassa */
+.fund-card {
+    background: var(--cream-card);
+    border-radius: var(--radius-sm);
+    padding: 3.5rem 2.8rem;
+    border: 1px solid var(--sage-subtle);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+}
+
+.fund-card::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid rgba(191, 161, 95, 0.25);
+    pointer-events: none;
+}
+
+.fund-title {
+    font-family: var(--font-heading-antique);
+    font-size: 2.2rem;
+    color: var(--sage-dark);
+    margin-bottom: 1.2rem;
+}
+
+.fund-text {
+    font-size: 1.08rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.fund-gift-badge {
+    background: var(--cream-bg);
+    border: 1px solid var(--brass-light);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.gift-icon-box {
+    font-size: 2rem;
+    color: var(--brass-dark);
+}
+
+.gift-details strong {
+    display: block;
+    font-family: var(--font-heading-roman);
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    color: var(--sage-dark);
+}
+
+.gift-details p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* OSA CTA Card med stor knapp */
+.rsvp-cta-card {
+    background: var(--cream-card);
+    border-radius: var(--radius-sm);
+    padding: 3.5rem 3rem;
+    border: 1px solid var(--brass-light);
+    box-shadow: var(--shadow-hover);
+    position: relative;
+    text-align: center;
+}
+
+.rsvp-cta-card::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid rgba(191, 161, 95, 0.25);
+    pointer-events: none;
+}
+
+.rsvp-cta-desc {
+    font-size: 1.12rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+.rsvp-btn-box {
+    margin-bottom: 1.5rem;
+}
+
+.antique-rsvp-main-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 380px;
+    padding: 1.3rem 2.2rem;
+    font-family: var(--font-heading-roman);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--sage-dark), var(--sage-primary));
+    border: 1px solid var(--brass-gold);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    box-shadow: 0 6px 25px rgba(44, 59, 49, 0.25);
+    transition: var(--transition-smooth);
+}
+
+.antique-rsvp-main-btn:hover {
+    background: linear-gradient(135deg, var(--sage-primary), var(--sage-dark));
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px rgba(44, 59, 49, 0.35);
+    color: #ffffff;
+}
+
+.btn-arrow {
+    font-size: 1.2rem;
+    transition: var(--transition-smooth);
+}
+
+.antique-rsvp-main-btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+.rsvp-sub-note {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+
+/* ==========================================================================
+   10. FOOTER (KOLOFON & COPYRIGHT I ANRIK STIL)
+   ========================================================================== */
+.vintage-footer {
+    background-color: var(--sage-dark);
+    color: var(--sage-light);
+    padding: 4.5rem 1.8rem 2.2rem;
+    text-align: center;
+    border-top: 2px solid var(--brass-gold);
+}
+
+.footer-content {
+    max-width: 650px;
+    margin: 0 auto 2.5rem;
+}
+
+.footer-logo {
+    font-family: var(--font-heading-script);
+    font-size: 3rem;
+    color: var(--brass-light);
+    margin-bottom: 0.3rem;
+    line-height: 1.1;
+}
+
+.footer-quote {
+    font-family: var(--font-heading-antique);
+    font-style: italic;
+    font-size: 1.35rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.2rem;
+}
+
+.footer-copyright {
+    font-family: var(--font-heading-antique);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 1px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 1.5rem;
+}
+
+
+/* ==========================================================================
+   11. RESPONSIV ANPASSNING (RESPONSIVE MEDIA QUERIES FÖR MOBIL & SURFPLATTA)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .journey-content-grid,
+    .rsvp-dual-grid,
+    .schedule-grid.schedule-two-col {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
-    .newsprint-outer-wrapper {
-        padding: 0;
+    .toastmasters-grid {
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .antique-header-nav {
+        padding: 0.75rem 1.2rem;
     }
 
-    .newsprint-sheet {
-        border-left: none;
-        border-right: none;
-        border-top: none;
-        padding: 15px 12px 25px;
+    .mobile-nav-toggle {
+        display: flex;
     }
 
-    .masthead-venue-bar {
+    /* Mobil Sliding Meny */
+    .antique-nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(36, 48, 40, 0.97);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-left: 1px solid var(--brass-gold);
         flex-direction: column;
-        gap: 2px;
+        justify-content: center;
+        align-items: center;
+        gap: 1.8rem;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: -8px 0 30px rgba(0, 0, 0, 0.4);
+        padding: 2rem;
+    }
+
+    .antique-nav-links.mobile-nav-active {
+        right: 0;
+    }
+
+    .antique-nav-link {
+        font-size: 1.2rem;
+        color: #ffffff;
+    }
+
+    .antique-header-nav.nav-scrolled .antique-nav-link {
+        color: #ffffff;
+    }
+
+    .antique-nav-link:hover {
+        color: var(--brass-light);
+    }
+
+    .nav-sep {
+        display: none;
+    }
+
+    .antique-nav-link.nav-rsvp-btn {
+        width: 100%;
         text-align: center;
-        font-size: 0.65rem;
+        padding: 0.7rem 1.5rem;
+        font-size: 1.1rem;
+        margin-top: 0.5rem;
     }
 
-    .masthead-tagline-bar {
-        font-size: 0.58rem;
-        letter-spacing: 1px;
+    .logo-script {
+        font-size: 1.7rem;
     }
 
-    .main-newspaper-title {
+    .hero-bottom-content {
+        padding-bottom: 2.8rem;
+    }
+
+    .hero-main-title {
         font-size: 2.8rem;
     }
 
-    .masthead-dateline-panel {
-        flex-direction: column;
-        gap: 3px;
-        font-size: 0.68rem;
-    }
-
-    .nav-links-container {
-        gap: 6px;
-        font-size: 0.68rem;
-    }
-
-    .hero-union-title {
+    .hero-script-tag {
         font-size: 1.6rem;
     }
 
-    .names-span {
-        font-size: 1.9rem;
+    .journey-intro-card,
+    .fund-card,
+    .rsvp-cta-card,
+    .toastmasters-showcase-box,
+    .guest-checklist-wrap {
+        padding: 2.2rem 1.5rem;
     }
 
-    .hero-subdeck {
-        font-size: 1rem;
+    .toastmaster-photo-frame {
+        width: 140px;
+        height: 140px;
     }
 
-    .photo-art-placeholder {
-        height: 220px;
+    .countdown-grid {
+        gap: 0.8rem;
     }
 
-    .monogram-large {
-        font-size: 2.4rem;
+    .countdown-card {
+        min-width: 78px;
+        padding: 0.8rem 0.9rem;
     }
 
-    .schedule-item {
-        grid-template-columns: 35px 55px 1fr;
-        gap: 8px;
-        padding: 10px 8px;
-    }
-
-    .schedule-time-cell {
-        font-size: 0.95rem;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    .colophon-content {
+    .schedule-card {
         flex-direction: column;
-        text-align: center;
-        gap: 8px;
+        gap: 0.8rem;
+        padding: 2rem 1.6rem;
     }
 
-    /* Gör korsordsrutorna lite mindre på mobil så det ryms */
-    .crossword-grid {
-        grid-template-columns: repeat(11, 26px);
-        grid-template-rows: repeat(11, 26px);
+    .schedule-badge-time {
+        border-right: none;
+        border-bottom: 1px solid var(--brass-light);
+        padding-right: 0;
+        padding-bottom: 0.5rem;
+        font-size: 1.3rem;
     }
 }
