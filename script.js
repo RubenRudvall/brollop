@@ -131,4 +131,81 @@ document.addEventListener('DOMContentLoaded', () => {
         cb.addEventListener('change', updateChecklistProgress);
     });
 
+
+    // =====================================================================
+    // 4. BERÄTTELSE & GALLERI-SLIDER (VÅR HISTORIA)
+    // =====================================================================
+
+    const storySlides = document.querySelectorAll('.story-slide');
+    const storyTabs = document.querySelectorAll('.story-nav-tab');
+    const storyDots = document.querySelectorAll('.story-dot');
+    const storyPrevBtn = document.getElementById('storyPrevBtn');
+    const storyNextBtn = document.getElementById('storyNextBtn');
+
+    let currentStorySlide = 0;
+
+    function goToStorySlide(index) {
+        if (!storySlides.length) return;
+        
+        // Wrap index
+        if (index < 0) index = storySlides.length - 1;
+        if (index >= storySlides.length) index = 0;
+        
+        currentStorySlide = index;
+
+        // Uppdatera slides
+        storySlides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === currentStorySlide);
+        });
+
+        // Uppdatera flikar
+        storyTabs.forEach((tab, i) => {
+            tab.classList.toggle('active', i === currentStorySlide);
+        });
+
+        // Uppdatera punkter
+        storyDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentStorySlide);
+        });
+
+        // Uppdatera knapptexter
+        if (storyNextBtn && storyPrevBtn) {
+            if (currentStorySlide === 0) {
+                storyNextBtn.innerHTML = '<span>Se klassfoto →</span>';
+                storyPrevBtn.innerHTML = '<span>← Berättelsen</span>';
+            } else {
+                storyNextBtn.innerHTML = '<span>Läs berättelsen →</span>';
+                storyPrevBtn.innerHTML = '<span>← Berättelsen</span>';
+            }
+        }
+    }
+
+    if (storySlides.length > 0) {
+        storyTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetSlide = parseInt(tab.getAttribute('data-slide'), 10);
+                goToStorySlide(targetSlide);
+            });
+        });
+
+        storyDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetSlide = parseInt(dot.getAttribute('data-slide'), 10);
+                goToStorySlide(targetSlide);
+            });
+        });
+
+        if (storyPrevBtn) {
+            storyPrevBtn.addEventListener('click', () => {
+                goToStorySlide(currentStorySlide - 1);
+            });
+        }
+
+        if (storyNextBtn) {
+            storyNextBtn.addEventListener('click', () => {
+                goToStorySlide(currentStorySlide + 1);
+            });
+        }
+    }
+
 });

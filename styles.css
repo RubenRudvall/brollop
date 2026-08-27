@@ -548,11 +548,15 @@ a {
 
 .journey-intro-card {
     background-color: var(--cream-card);
-    padding: 3.5rem 3rem;
+    padding: 3rem 2.5rem;
     border-radius: var(--radius-sm);
     border: 1px solid var(--cream-border);
     box-shadow: var(--shadow-soft);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 480px;
 }
 
 .journey-intro-card::before {
@@ -564,6 +568,7 @@ a {
     bottom: 6px;
     border: 1px solid rgba(191, 161, 95, 0.25);
     pointer-events: none;
+    z-index: 1;
 }
 
 .journey-intro-card p {
@@ -587,6 +592,182 @@ a {
     font-size: 1.2rem;
     letter-spacing: 0.5rem;
     margin-top: 1rem;
+}
+
+/* Story Slider Tabs & Navigation */
+.story-slider-nav-top {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(191, 161, 95, 0.25);
+    padding-bottom: 0.8rem;
+    position: relative;
+    z-index: 2;
+}
+
+.story-nav-tab {
+    background: transparent;
+    border: none;
+    font-family: var(--font-heading-roman);
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.story-nav-tab:hover {
+    color: var(--sage-dark);
+}
+
+.story-nav-tab.active {
+    color: var(--brass-dark);
+    font-weight: 600;
+}
+
+.story-nav-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -0.85rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--brass-gold);
+}
+
+/* Viewport and Slides */
+.story-slider-viewport {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    min-height: 300px;
+    z-index: 2;
+}
+
+.story-slide {
+    width: 100%;
+    display: none;
+    opacity: 0;
+}
+
+.story-slide.active {
+    display: block;
+    opacity: 1;
+    animation: fadeInSlide 0.35s ease-out forwards;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.story-photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 0.25rem 0;
+}
+
+.story-photo-frame {
+    max-width: 250px;
+    border-radius: 8px;
+    padding: 6px;
+    background: #ffffff;
+    border: 1px solid var(--cream-border);
+    box-shadow: 0 8px 24px rgba(44, 59, 49, 0.12);
+    margin-bottom: 0.8rem;
+    transition: var(--transition-smooth);
+}
+
+.story-photo-frame:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 28px rgba(44, 59, 49, 0.18);
+}
+
+.story-slide-img {
+    width: 100%;
+    max-height: 270px;
+    object-fit: contain;
+    border-radius: 4px;
+    display: block;
+}
+
+.story-photo-caption {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Controls (Bottom) */
+.story-slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(191, 161, 95, 0.25);
+    position: relative;
+    z-index: 2;
+}
+
+.story-slider-btn {
+    background: transparent;
+    border: 1px solid var(--brass-gold);
+    color: var(--brass-dark);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-family: var(--font-heading-roman);
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.story-slider-btn:hover {
+    background: var(--brass-gold);
+    color: #ffffff;
+}
+
+.story-slider-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-color: rgba(191, 161, 95, 0.3);
+}
+
+.story-slider-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.story-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(191, 161, 95, 0.35);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.story-dot.active {
+    background: var(--brass-dark);
+    transform: scale(1.25);
 }
 
 /* Timeline Milestones */

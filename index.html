@@ -16,7 +16,7 @@
         rel="stylesheet">
 
     <!-- Custom Vintage Styles with Cache Busting -->
-    <link rel="stylesheet" href="styles.css?v=2.1">
+    <link rel="stylesheet" href="styles.css?v=2.2">
 </head>
 
 <body>
@@ -146,18 +146,60 @@
             </div>
 
             <div class="journey-content-grid">
-                <!-- Vänster: Berättelsen -->
-                <div class="journey-intro-card">
-                    <p class="lead-p">
-                        Allt tog sin början i gymnasiets första årskurs där vi placerades i samma klassrum. Det skulle
-                        dock dröja till tvåan innan samtalen tog fart på allvar – och sedan dess har vi varit
-                        oskiljaktiga i vått och torrt.
-                    </p>
-                    <p>
-                        Under ett decennium har vi delat resor, vardagsäventyr och skratt. År 2017 blev vi tillsammans
-                        och sommaren 2027 firar vi 10 år tillsammans genom att gifta oss!
-                    </p>
-                    <div class="card-flourish">❧ ❧ ❧</div>
+                <!-- Vänster: Berättelsen & Galleri (Bläddringsbar) -->
+                <div class="journey-intro-card story-slider-card">
+                    <div class="story-slider-nav-top">
+                        <button type="button" class="story-nav-tab active" data-slide="0">
+                            <span>Berättelsen</span>
+                        </button>
+                        <button type="button" class="story-nav-tab" data-slide="1">
+                            <span>Klassfoto 1:an 📸</span>
+                        </button>
+                    </div>
+
+                    <div class="story-slider-viewport" id="storySliderViewport">
+                        <!-- Slide 1: Berättelsen -->
+                        <div class="story-slide active" data-slide-index="0">
+                            <p class="lead-p">
+                                Allt tog sin början i gymnasiets första årskurs där vi placerades i samma klassrum. Det
+                                skulle dock dröja till tvåan innan samtalen tog fart på allvar – och sedan dess har vi
+                                varit oskiljaktiga i vått och torrt.
+                            </p>
+                            <p>
+                                Under ett decennium har vi delat resor, vardagsäventyr och skratt. År 2017 blev vi
+                                tillsammans och sommaren 2027 firar vi 10 år tillsammans genom att gifta oss!
+                            </p>
+                            <div class="card-flourish">❧ ❧ ❧</div>
+                        </div>
+
+                        <!-- Slide 2: Gymnasiefotot -->
+                        <div class="story-slide" data-slide-index="1">
+                            <div class="story-photo-wrapper">
+                                <div class="story-photo-frame">
+                                    <img src="hanna_ruben_gymnasiet.jpg" alt="Hanna och Ruben i ettan på gymnasiet"
+                                        class="story-slide-img">
+                                </div>
+                                <p class="story-photo-caption">
+                                    <strong>Klass 1, Gymnasiet</strong> — Här tog allt sin början!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bläddringsknappar & Punkter -->
+                    <div class="story-slider-controls">
+                        <button type="button" class="story-slider-btn prev-btn" id="storyPrevBtn"
+                            aria-label="Föregående">
+                            <span>← Föregående</span>
+                        </button>
+                        <div class="story-slider-dots" id="storySliderDots">
+                            <span class="story-dot active" data-slide="0"></span>
+                            <span class="story-dot" data-slide="1"></span>
+                        </div>
+                        <button type="button" class="story-slider-btn next-btn" id="storyNextBtn" aria-label="Nästa">
+                            <span>Se klassfoto →</span>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Höger: Tidslinje med anrik stil -->
@@ -171,9 +213,6 @@
                         <h3 class="milestone-title">Första Mötet</h3>
                         <p class="milestone-desc">Klasskompisar i gymnasiet och början på vår gemensamma resa genom
                             livet.</p>
-                        <div class="milestone-photo-card">
-                            <img src="hanna_ruben_gymnasiet.jpg" alt="Hanna och Ruben i gymnasiet">
-                        </div>
                     </div>
 
                     <div class="milestone-item">
@@ -460,7 +499,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=2.1"></script>
+    <script src="script.js?v=2.2"></script>
 </body>
 
 </html>
