@@ -1300,6 +1300,12 @@ a {
     line-height: 1.8;
 }
 
+.fund-badges-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
 .fund-gift-badge {
     background: var(--cream-bg);
     border: 1px solid var(--brass-light);
@@ -1308,6 +1314,20 @@ a {
     display: flex;
     align-items: center;
     gap: 1.2rem;
+}
+
+.fund-link-badge {
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    border-color: var(--brass-gold);
+    cursor: pointer;
+}
+
+.fund-link-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(44, 59, 49, 0.12);
+    border-color: var(--sage-primary);
+    background: #ffffff;
 }
 
 .gift-icon-box {
@@ -1327,6 +1347,11 @@ a {
     font-size: 0.95rem;
     color: var(--text-muted);
     margin: 0;
+}
+
+.fund-link-badge .gift-details p {
+    color: var(--sage-dark);
+    font-weight: 500;
 }
 
 /* OSA CTA Card med stor knapp */
