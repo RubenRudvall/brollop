@@ -937,12 +937,66 @@ a {
     font-size: 1.12rem;
     color: var(--rose-dark);
     margin-bottom: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+a.schedule-location:hover {
+    color: var(--sage-dark);
+    text-decoration: underline;
 }
 
 .schedule-description {
     font-size: 1.05rem;
     color: var(--text-muted);
     line-height: 1.65;
+}
+
+.schedule-map-action {
+    margin-top: 1.2rem;
+}
+
+.schedule-map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.65rem 1.25rem;
+    font-family: var(--font-heading-roman);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sage-dark);
+    background: #ffffff;
+    border: 1px solid var(--brass-gold);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.schedule-map-btn:hover {
+    background: var(--sage-dark);
+    color: #ffffff;
+    border-color: var(--sage-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(44, 59, 49, 0.18);
+}
+
+.schedule-map-btn .map-btn-icon {
+    font-size: 0.95rem;
+}
+
+.schedule-map-btn .map-btn-arrow {
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+}
+
+.schedule-map-btn:hover .map-btn-arrow {
+    transform: translateX(3px);
 }
 
 
